@@ -1,0 +1,271 @@
+Date, Low, High, Chance of Rain, Summary, Humidity, Wind Speed, Wind Direction, Sunrise, Sunset, UV Index, Air Quality, Moon Phase, Visibility, Precipitation, Barometric Pressure, Dew Point, Source
+9/1/2023, 60, 90, 10, mostly sunny, 65, 5, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 10 miles, 0.00, 1015 hPa, 55, AccuWeather
+9/2/2023, 62, 88, 20, partly cloudy, 70, 8, W, 06:31, 19:43, 6, Moderate, First Quarter, 9 miles, 0.02, 1010 hPa, 58, AccuWeather
+9/3/2023, 58, 82, 40, scattered showers, 75, 12, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 7 miles, 0.12, 1008 hPa, 60, AccuWeather
+9/4/2023, 55, 78, 70, rainy day, 80, 16, S, 06:33, 19:39, 3, Unhealthy, Full Moon, 6 miles, 0.30, 1005 hPa, 62, AccuWeather
+9/5/2023, 63, 85, 15, sunny intervals, 68, 7, NE, 06:34, 19:37, 8, Good, Waxing Crescent, 11 miles, 0.01, 1012 hPa, 59, AccuWeather
+9/6/2023, 59, 80, 25, scattered clouds, 70, 10, N, 06:35, 19:35, 6, Moderate, Last Quarter, 9 miles, 0.05, 1009 hPa, 58, AccuWeather
+9/7/2023, 57, 77, 50, showers likely, 75, 14, SE, 06:36, 19:33, 4, Unhealthy, Waning Gibbous, 8 miles, 0.18, 1007 hPa, 60, AccuWeather
+9/8/2023, 64, 88, 10, mostly sunny, 62, 5, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 12 miles, 0.03, 1014 hPa, 56, AccuWeather
+9/9/2023, 66, 92, 5, clear skies, 58, 6, N, 06:38, 19:29, 9, Excellent, First Quarter, 13 miles, 0.00, 1017 hPa, 54, AccuWeather
+9/10/2023, 61, 86, 30, isolated showers, 70, 11, E, 06:39, 19:27, 5, Poor, Waning Crescent, 10 miles, 0.10, 1008 hPa, 59, AccuWeather
+9/11/2023, 57, 78, 60, rainy day, 80, 15, S, 06:40, 19:25, 2, Unhealthy, Waning Gibbous, 6 miles, 0.25, 1006 hPa, 61, AccuWeather
+9/12/2023, 62, 85, 20, partly cloudy, 68, 9, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 10 miles, 0.04, 1013 hPa, 57, AccuWeather
+9/13/2023, 68, 90, 5, clear skies, 60, 5, NW, 06:42, 19:21, 8, Excellent, Full Moon, 12 miles, 0.01, 1016 hPa, 52, AccuWeather
+9/14/2023, 70, 88, 0, sunny day, 57, 4, N, 06:43, 19:19, 10, Good, Last Quarter, 13 miles, 0.00, 1018 hPa, 50, AccuWeather
+9/15/2023, 64, 82, 10, mostly sunny, 64, 7, NE, 06:44, 19:17, 7, Excellent, Waxing Crescent, 11 miles, 0.02, 1012 hPa, 55, AccuWeather
+9/1/2023, 59, 89, 10, partly sunny, 67, 5, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 9 miles, 0.05, 1013 hPa, 54, BBC Weather
+9/2/2023, 63, 87, 25, scattered clouds, 72, 8, W, 06:31, 19:43, 6, Moderate, First Quarter, 10 miles, 0.03, 1009 hPa, 57, BBC Weather
+9/3/2023, 57, 81, 40, scattered showers, 78, 12, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 8 miles, 0.14, 1007 hPa, 59, BBC Weather
+9/4/2023, 54, 76, 70, rainy day, 83, 16, S, 06:33, 19:39, 3, Unhealthy, Full Moon, 7 miles, 0.28, 1004 hPa, 61, BBC Weather
+9/5/2023, 62, 84, 15, sunny intervals, 70, 7, NE, 06:34, 19:37, 8, Good, Waxing Crescent, 11 miles, 0.01, 1011 hPa, 56, BBC Weather
+9/6/2023, 58, 79, 25, scattered clouds, 68, 10, N, 06:35, 19:35, 6, Moderate, Last Quarter, 9 miles, 0.06, 1008 hPa, 58, BBC Weather
+9/7/2023, 56, 75, 50, showers likely, 73, 14, SE, 06:36, 19:33, 4, Unhealthy, Waning Gibbous, 7 miles, 0.17, 1006 hPa, 60, BBC Weather
+9/8/2023, 63, 86, 10, mostly sunny, 61, 5, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 12 miles, 0.02, 1013 hPa, 55, BBC Weather
+9/9/2023, 65, 91, 5, clear skies, 59, 6, N, 06:38, 19:29, 9, Excellent, First Quarter, 13 miles, 0.01, 1016 hPa, 53, BBC Weather
+9/10/2023, 60, 85, 30, isolated showers, 73, 11, E, 06:39, 19:27, 5, Poor, Waning Crescent, 10 miles, 0.09, 1007 hPa, 58, BBC Weather
+9/11/2023, 56, 76, 60, rainy day, 82, 15, S, 06:40, 19:25, 2, Unhealthy, Waning Gibbous, 6 miles, 0.24, 1005 hPa, 60, BBC Weather
+9/12/2023, 60, 84, 20, partly cloudy, 70, 9, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 10 miles, 0.03, 1012 hPa, 56, BBC Weather
+9/13/2023, 67, 89, 0, clear skies, 58, 5, NW, 06:42, 19:21, 8, Excellent, Full Moon, 12 miles, 0.00, 1015 hPa, 51, BBC Weather
+9/14/2023, 69, 88, 0, sunny day, 56, 4, N, 06:43, 19:19, 10, Good, Last Quarter, 13 miles, 0.00, 1017 hPa, 49, BBC Weather
+9/15/2023, 65, 81, 10, mostly sunny, 62, 7, NE, 06:44, 19:17, 7, Excellent, Waxing Crescent, 11 miles, 0.01, 1010 hPa, 54, BBC Weather
+9/1/2023, 60, 90, 10, partly sunny, 70, 5, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 9 miles, 0.04, 1013 hPa, 57, Climatic Research Unit (CRU)
+9/2/2023, 64, 88, 25, scattered clouds, 72, 8, W, 06:31, 19:43, 6, Moderate, First Quarter, 10 miles, 0.03, 1009 hPa, 59, Climatic Research Unit (CRU)
+9/3/2023, 58, 82, 40, scattered showers, 75, 12, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 8 miles, 0.15, 1007 hPa, 61, Climatic Research Unit (CRU)
+9/4/2023, 55, 78, 70, rainy day, 80, 16, S, 06:33, 19:39, 3, Unhealthy, Full Moon, 7 miles, 0.28, 1004 hPa, 63, Climatic Research Unit (CRU)
+9/5/2023, 62, 84, 15, sunny intervals, 68, 7, NE, 06:34, 19:37, 8, Good, Waxing Crescent, 11 miles, 0.02, 1011 hPa, 58, Climatic Research Unit (CRU)
+9/6/2023, 59, 80, 25, scattered clouds, 70, 10, N, 06:35, 19:35, 6, Moderate, Last Quarter, 9 miles, 0.05, 1008 hPa, 60, Climatic Research Unit (CRU)
+9/7/2023, 57, 77, 50, showers likely, 75, 14, SE, 06:36, 19:33, 4, Unhealthy, Waning Gibbous, 7 miles, 0.18, 1006 hPa, 62, Climatic Research Unit (CRU)
+9/8/2023, 63, 85, 10, mostly sunny, 61, 5, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 12 miles, 0.01, 1013 hPa, 56, Climatic Research Unit (CRU)
+9/9/2023, 65, 92, 5, clear skies, 59, 6, N, 06:38, 19:29, 9, Excellent, First Quarter, 13 miles, 0.00, 1016 hPa, 53, Climatic Research Unit (CRU)
+9/10/2023, 60, 86, 30, isolated showers, 73, 11, E, 06:39, 19:27, 5, Poor, Waning Crescent, 10 miles, 0.09, 1007 hPa, 58, Climatic Research Unit (CRU)
+9/11/2023, 56, 75, 60, rainy day, 82, 15, S, 06:40, 19:25, 2, Unhealthy, Waning Gibbous, 6 miles, 0.24, 1005 hPa, 60, Climatic Research Unit (CRU)
+9/12/2023, 60, 82, 20, partly cloudy, 70, 9, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 10 miles, 0.03, 1012 hPa, 56, Climatic Research Unit (CRU)
+9/13/2023, 67, 89, 0, clear skies, 58, 5, NW, 06:42, 19:21, 8, Excellent, Full Moon, 12 miles, 0.00, 1015 hPa, 51, Climatic Research Unit (CRU)
+9/14/2023, 69, 88, 0, sunny day, 56, 4, N, 06:43, 19:19, 10, Good, Last Quarter, 13 miles, 0.00, 1017 hPa, 49, Climatic Research Unit (CRU)
+9/15/2023, 68, 82, 10, mostly sunny, 62, 6, NE, 06:44, 19:17, 7, Good, Waxing Crescent, 10 miles, 0.02, 1010 hPa, 55, Climatic Research Unit (CRU)
+9/1/2023, 58, 88, 15, partly sunny, 70, 4, N, 06:30, 19:45, 6, Good, Waxing Crescent, 9 miles, 0.07, 1012 hPa, 56, KATU
+9/2/2023, 64, 90, 25, scattered clouds, 75, 7, NE, 06:31, 19:43, 5, Moderate, First Quarter, 10 miles, 0.04, 1009 hPa, 60, KATU
+9/3/2023, 55, 82, 60, showers likely, 80, 10, E, 06:32, 19:41, 3, Unhealthy, Waning Gibbous, 8 miles, 0.15, 1005 hPa, 62, KATU
+9/4/2023, 52, 75, 80, rainy day, 85, 12, SE, 06:33, 19:39, 2, Unhealthy, Full Moon, 7 miles, 0.30, 1003 hPa, 64, KATU
+9/5/2023, 60, 80, 10, mostly sunny, 65, 5, NW, 06:34, 19:37, 8, Good, Waning Crescent, 10 miles, 0.02, 1010 hPa, 58, KATU
+9/6/2023, 62, 84, 20, partly cloudy, 70, 8, W, 06:35, 19:35, 6, Moderate, Last Quarter, 9 miles, 0.05, 1008 hPa, 60, KATU
+9/7/2023, 58, 78, 40, scattered showers, 75, 11, SW, 06:36, 19:33, 5, Poor, Waning Gibbous, 7 miles, 0.12, 1006 hPa, 62, KATU
+9/8/2023, 64, 85, 5, clear skies, 62, 6, N, 06:37, 19:31, 9, Excellent, Waxing Crescent, 12 miles, 0.01, 1013 hPa, 56, KATU
+9/9/2023, 68, 92, 0, sunny day, 58, 5, NW, 06:38, 19:29, 10, Good, First Quarter, 13 miles, 0.00, 1016 hPa, 53, KATU
+9/10/2023, 63, 88, 25, scattered clouds, 70, 9, NE, 06:39, 19:27, 6, Moderate, Waning Crescent, 9 miles, 0.08, 1008 hPa, 59, KATU
+9/11/2023, 58, 78, 50, showers likely, 75, 13, E, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 6 miles, 0.20, 1006 hPa, 61, KATU
+9/12/2023, 62, 85, 10, mostly sunny, 68, 6, N, 06:41, 19:23, 7, Good, Waxing Gibbous, 11 miles, 0.03, 1012 hPa, 57, KATU
+9/13/2023, 70, 88, 0, clear skies, 57, 4, NW, 06:42, 19:21, 8, Excellent, FullMoon, 12 miles, 0.00, 1015 hPa, 51, KATU
+9/14/2023, 72, 88, 0, sunny day, 54, 3, N, 06:43, 19:19, 10, Good, Last Quarter, 13 miles, 0.00, 1017 hPa, 49, KATU
+9/15/2023, 68, 82, 10, mostly sunny, 62, 6, NE, 06:44, 19:17, 7, Good, Waxing Crescent, 10 miles, 0.02, 1010 hPa, 55, KATU
+9/1/2023, 60, 100, 10, mostly sunny, 65, 55, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 10 miles, 0.00, 1015 hPa, 55, KEX
+9/2/2023, 62, 88, 20, partly cloudy, 70, 8, W, 06:31, 19:43, 6, Moderate, First Quarter, 9 miles, 0.02, 1010 hPa, 58, KEX
+9/3/2023, 58, 82, 40, scattered showers, 75, 12, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 7 miles, 0.12, 1008 hPa, 60, KEX
+9/4/2023, 55, 78, 70, rainy day, 80, 15, S, 06:33, 19:39, 3, Unhealthy, Full Moon, 6 miles, 0.30, 1005 hPa, 62, KEX
+9/5/2023, 63, 85, 15, sunny intervals, 68, 6, N, 06:34, 19:37, 8, Good, Waning Crescent, 11 miles, 0.01, 1012 hPa, 59, KEX
+9/6/2023, 59, 80, 25, scattered clouds, 70, 10, NE, 06:35, 19:35, 6, Moderate, Last Quarter, 8 miles, 0.05, 1009 hPa, 58, KEX
+9/7/2023, 57, 77, 50, showers likely, 75, 14, SE, 06:36, 19:33, 4, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1007 hPa, 60, KEX
+9/8/2023, 64, 88, 10, mostly sunny, 62, 7, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 12 miles, 0.03, 1014 hPa, 56, KEX
+9/9/2023, 66, 92, 5, clear skies, 58, 6, N, 06:38, 19:29, 9, Excellent, First Quarter, 13 miles, 0.00, 1017 hPa, 54, KEX
+9/10/2023, 61, 86, 30, isolated showers, 70, 11, E, 06:39, 19:27, 5, Poor, Waning Crescent, 9 miles, 0.10, 1008 hPa, 59, KEX
+9/11/2023, 57, 78, 60, rainy day, 80, 16, S, 06:40, 19:25, 2, Unhealthy, Waning Gibbous, 5 miles, 0.25, 1006 hPa, 61, KEX
+9/12/2023, 62, 85, 20, partly cloudy, 68, 9, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 10 miles, 0.04, 1013 hPa, 57, KEX
+9/13/2023, 68, 90, 5, clear skies, 60, 5, NW, 06:42, 19:21, 8, Excellent, Full Moon, 12 miles, 0.01, 1016 hPa, 52, KEX
+9/14/2023, 70, 88, 0, sunny day, 57, 4, N, 06:43, 19:19, 10, Good, Last Quarter, 13 miles, 0.00, 1018 hPa, 50, KEX
+9/15/2023, 64, 82, 15, sunny intervals, 64, 7, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 11 miles, 0.02, 1012 hPa, 55, KEX
+9/1/2023, 58, 90, 10, mostly sunny, 70, 50, NW, 06:30, 19:45, 6, Good, Waxing Crescent, 9 miles, 0.01, 1016 hPa, 57, KGW
+9/2/2023, 61, 85, 25, partly cloudy, 75, 8, W, 06:31, 19:43, 5, Moderate, First Quarter, 8 miles, 0.03, 1012 hPa, 60, KGW
+9/3/2023, 57, 80, 40, scattered showers, 80, 14, SW, 06:32, 19:41, 4, Poor, Waning Gibbous, 7 miles, 0.12, 1008 hPa, 63, KGW
+9/4/2023, 54, 75, 70, rainy day, 85, 18, S, 06:33, 19:39, 3, Unhealthy, Full Moon, 6 miles, 0.30, 1005 hPa, 65, KGW
+9/5/2023, 62, 82, 15, sunny intervals, 68, 5, N, 06:34, 19:37, 7, Good, Waning Crescent, 10 miles, 0.02, 1010 hPa, 59, KGW
+9/6/2023, 58, 78, 25, scattered clouds, 72, 12, NE, 06:35, 19:35, 6, Moderate, Last Quarter, 9 miles, 0.05, 1009 hPa, 58, KGW
+9/7/2023, 56, 75, 50, showers likely, 78, 15, SE, 06:36, 19:33, 5, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1007 hPa, 61, KGW
+9/8/2023, 63, 85, 10, mostly sunny, 65, 6, NW, 06:37, 19:31, 8, Good, Waxing Crescent, 11 miles, 0.03, 1014 hPa, 56, KGW
+9/9/2023, 65, 90, 5, clear skies, 60, 5, N, 06:38, 19:29, 9, Excellent, First Quarter, 12 miles, 0.00, 1017 hPa, 54, KGW
+9/10/2023, 60, 84, 30, isolated showers, 70, 10, E, 06:39, 19:27, 6, Poor, Waning Crescent, 9 miles, 0.10, 1008 hPa, 58, KGW
+9/11/2023, 56, 75, 60, rainy day, 80, 16, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 7 miles, 0.25, 1006 hPa, 61, KGW
+9/12/2023, 61, 82, 20, partly cloudy, 70, 9, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 10 miles, 0.04, 1013 hPa, 57, KGW
+9/13/2023, 68, 88, 5, clear skies, 62, 5, NW, 06:42, 19:21, 8, Excellent, Full Moon, 12 miles, 0.01, 1016 hPa, 52, KGW
+9/14/2023, 70, 85, 0, sunny day, 60, 4, N, 06:43, 19:19, 10, Good, Last Quarter, 13 miles, 0.00, 1018 hPa, 50, KGW
+9/15/2023, 64, 80, 15, sunny intervals, 65, 7, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 11 miles, 0.00, 1018 hPa, 50, KGW
+9/1/2023, 60, 92, 15, mostly sunny, 68, 52, NW, 06:30, 19:45, 6, Good, Waxing Crescent, 10 miles, 0.01, 1016 hPa, 58, KOIN
+9/2/2023, 63, 87, 25, partly cloudy, 72, 10, W, 06:31, 19:43, 5, Moderate, First Quarter, 9 miles, 0.03, 1012 hPa, 61, KOIN
+9/3/2023, 59, 82, 40, scattered showers, 78, 16, SW, 06:32, 19:41, 4, Poor, Waning Gibbous, 7 miles, 0.12, 1008 hPa, 64, KOIN
+9/4/2023, 56, 76, 70, rainy day, 83, 20, S, 06:33, 19:39, 3, Unhealthy, Full Moon, 6 miles, 0.30, 1005 hPa, 66, KOIN
+9/5/2023, 64, 84, 15, sunny intervals, 70, 8, N, 06:34, 19:37, 7, Good, Waning Crescent, 11 miles, 0.02, 1010 hPa, 60, KOIN
+9/6/2023, 60, 79, 25, scattered clouds, 74, 14, NE, 06:35, 19:35, 6, Moderate, Last Quarter, 10 miles, 0.05, 1009 hPa, 59, KOIN
+9/7/2023, 58, 78, 50, showers likely, 80, 18, SE, 06:36, 19:33, 5, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1007 hPa, 62, KOIN
+9/8/2023, 65, 85, 10, mostly sunny, 66, 6, NW, 06:37, 19:31, 8, Good, Waxing Crescent, 12 miles, 0.03, 1014 hPa, 57, KOIN
+9/9/2023, 67, 90, 5, clear skies, 62, 5, N, 06:38, 19:29, 9, Excellent, First Quarter, 13 miles, 0.00, 1017 hPa, 54, KOIN
+9/10/2023, 62, 85, 30, isolated showers, 72, 12, E, 06:39, 19:27, 6, Poor, Waning Crescent, 9 miles, 0.10, 1008 hPa, 58, KOIN
+9/11/2023, 58, 75, 60, rainy day, 82, 16, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 7 miles, 0.25, 1006 hPa, 61, KOIN
+9/12/2023, 63, 82, 20, partly cloudy, 72, 9, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 10 miles, 0.04, 1013 hPa, 56, KOIN
+9/13/2023, 70, 88, 5, clear skies, 64, 5, NW, 06:42, 19:21, 8, Excellent, Full Moon, 12 miles, 0.01, 1016 hPa, 52, KOIN
+9/14/2023, 72, 85, 0, sunny day, 60, 4, N, 06:43, 19:19, 10, Good, Last Quarter, 13 miles, 0.00, 1018 hPa, 50, KOIN
+9/15/2023, 66, 80, 15, sunny intervals, 66, 7, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent,13 miles, 0.00, 1018 hPa, 50, KOIN
+9/1/2023, 62, 91, 15, mostly sunny, 70, 45, NW, 06:30, 19:45, 6, Good, Waxing Crescent, 9 miles, 0.02, 1015 hPa, 59, KOPB
+9/2/2023, 64, 87, 20, partly cloudy, 72, 12, W, 06:31, 19:43, 5, Moderate, First Quarter, 8 miles, 0.04, 1010 hPa, 62, KOPB
+9/3/2023, 60, 85, 40, scattered showers, 78, 18, SW, 06:32, 19:41, 4, Poor, Waning Gibbous, 7 miles, 0.15, 1008 hPa, 65, KOPB
+9/4/2023, 58, 78, 70, rainy day, 82, 22, S, 06:33, 19:39, 3, Unhealthy, Full Moon, 6 miles, 0.30, 1005 hPa, 67, KOPB
+9/5/2023, 66, 86, 15, sunny intervals, 68, 10, N, 06:34, 19:37, 7, Good, Waning Crescent, 11 miles, 0.02, 1012 hPa, 61, KOPB
+9/6/2023, 62, 82, 25, scattered clouds, 74, 15, NE, 06:35, 19:35, 6, Moderate, Last Quarter, 10 miles, 0.06, 1009 hPa, 60, KOPB
+9/7/2023, 60, 80, 50, showers likely, 80, 20, SE, 06:36, 19:33, 5, Unhealthy, Waning Gibbous, 6 miles, 0.20, 1007 hPa, 63, KOPB
+9/8/2023, 68, 88, 10, mostly sunny, 65, 8, NW, 06:37, 19:31, 8, Good, Waxing Crescent, 12 miles, 0.03, 1014 hPa, 58, KOPB
+9/9/2023, 70, 92, 5, clear skies, 62, 6, N, 06:38, 19:29, 9, Excellent, First Quarter, 13 miles, 0.00, 1017 hPa, 55, KOPB
+9/10/2023, 65, 86, 30, isolated showers, 72, 14, E, 06:39, 19:27, 6, Poor, Waning Crescent, 9 miles, 0.12, 1008 hPa, 60, KOPB
+9/11/2023, 62, 75, 60, rainy day, 82, 18, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 7 miles, 0.25, 1006 hPa, 63, KOPB
+9/12/2023, 67, 82, 20, partly cloudy, 70, 10, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 10 miles, 0.04, 1013 hPa, 59, KOPB
+9/13/2023, 72, 88, 5, clear skies, 64, 5, NW, 06:42, 19:21, 8, Excellent, Full Moon, 12 miles, 0.01, 1016 hPa, 54, KOPB
+9/14/2023, 75, 85, 0, sunny day, 62, 4, N, 06:43, 19:19, 10, Good, Last Quarter, 13 miles, 0.00, 1018 hPa, 51, KOPB
+9/15/2023, 70, 80, 15, sunny intervals, 68, 8, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 11 miles, 0.02, 1012 hPa, 56, KOPB
+9/1/2023, 65, 90, 10, mostly sunny, 68, 50, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 9 miles, 0.01, 1016 hPa, 61, KBPS
+9/2/2023, 67, 88, 15, partly cloudy, 70, 10, W, 06:31, 19:43, 6, Moderate, First Quarter, 8 miles, 0.03, 1011 hPa, 64, KBPS
+9/3/2023, 63, 85, 30, scattered showers, 75, 18, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 7 miles, 0.12, 1009 hPa, 67, KBPS
+9/4/2023, 60, 78, 60, rainy day, 80, 24, S, 06:33, 19:39, 4, Unhealthy, Full Moon, 6 miles, 0.30, 1006 hPa, 69, KBPS
+9/5/2023, 68, 85, 20, sunny intervals, 70, 12, N, 06:34, 19:37, 8, Good, Waning Crescent, 10 miles, 0.02, 1013 hPa, 63, KBPS
+9/6/2023, 64, 82, 40, scattered clouds, 72, 16, NE, 06:35, 19:35, 7, Moderate, Last Quarter, 9 miles, 0.05, 1008 hPa, 62, KBPS
+9/7/2023, 62, 80, 50, showers likely, 78, 20, SE, 06:36, 19:33, 6, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1007 hPa, 65, KBPS
+9/8/2023, 70, 88, 10, mostly sunny, 65, 8, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 11 miles, 0.03, 1014 hPa, 60, KBPS
+9/9/2023, 72, 92, 5, clear skies, 60, 6, N, 06:38, 19:29, 10, Excellent, First Quarter, 12 miles, 0.00, 1017 hPa, 57, KBPS
+9/10/2023, 68, 85, 30, isolated showers, 70, 14, E, 06:39, 19:27, 6, Poor, Waning Crescent, 9 miles, 0.10, 1009 hPa, 62, KBPS
+9/11/2023, 66, 78, 60, rainy day, 82, 20, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 7 miles, 0.25, 1006 hPa, 65, KBPS
+9/12/2023, 70, 82, 20, partly cloudy, 68, 10, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 10 miles, 0.04, 1013 hPa, 59, KBPS
+9/13/2023, 75, 88, 5, clear skies, 64, 5, NW, 06:42, 19:21, 8, Excellent, Full Moon, 11 miles, 0.01, 1016 hPa, 54, KBPS
+9/14/2023, 78, 85, 0, sunny day, 62, 4, N, 06:43, 19:19, 10, Good, Last Quarter, 12 miles, 0.00, 1018 hPa, 51, KBPS
+9/15/2023, 73, 80, 15, sunny intervals, 68, 9, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 10 miles, 0.02, 1012 hPa, 56, KBPS
+9/1/2023, 66, 89, 10, mostly sunny, 70, 40, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 8 miles, 0.01, 1015 hPa, 62, KPTV
+9/2/2023, 68, 88, 15, partly cloudy, 72, 10, W, 06:31, 19:43, 6, Moderate, First Quarter, 7 miles, 0.03, 1010 hPa, 65, KPTV
+9/3/2023, 65, 85, 30, scattered showers, 75, 18, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 6 miles, 0.12, 1008 hPa, 68, KPTV
+9/4/2023, 62, 78, 60, rainy day, 80, 24, S, 06:33, 19:39, 4, Unhealthy, Full Moon, 5 miles, 0.30, 1005 hPa, 70, KPTV
+9/5/2023, 70, 85, 20, sunny intervals, 70, 12, N, 06:34, 19:37, 8, Good, Waning Crescent, 9 miles, 0.02, 1012 hPa, 64, KPTV
+9/6/2023, 66, 82, 40, scattered clouds, 72, 16, NE, 06:35, 19:35, 7, Moderate, Last Quarter, 8 miles, 0.05, 1007 hPa, 63, KPTV
+9/7/2023, 64, 80, 50, showers likely, 78, 20, SE, 06:36, 19:33, 6, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1006 hPa, 66, KPTV
+9/8/2023, 72, 88, 10, mostly sunny, 68, 8, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 10 miles, 0.03, 1013 hPa, 61, KPTV
+9/9/2023, 74, 92, 5, clear skies, 62, 6, N, 06:38, 19:29, 10, Excellent, First Quarter, 11 miles, 0.00, 1016 hPa, 58, KPTV
+9/10/2023, 70, 85, 30, isolated showers, 70, 14, E, 06:39, 19:27, 6, Poor, Waning Crescent, 8 miles, 0.10, 1009 hPa, 63, KPTV
+9/11/2023, 68, 78, 60, rainy day, 82, 20, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 5 miles, 0.25, 1006 hPa, 66, KPTV
+9/12/2023, 72, 82, 20, partly cloudy, 70, 10, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 9 miles, 0.04, 1013 hPa, 60, KPTV
+9/13/2023, 77, 88, 5, clear skies, 64, 5, NW, 06:42, 19:21, 8, Excellent, Full Moon, 10 miles, 0.01, 1016 hPa, 55, KPTV
+9/14/2023, 78, 85, 0, sunny day, 62, 4, N, 06:43, 19:19, 10, Good, Last Quarter, 11 miles, 0.00, 1018 hPa, 52, KPTV
+9/15/2023, 75, 80, 15, sunny intervals, 68, 9, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent,11 miles, 0.00, 1018 hPa, 52, KPTV
+9/1/2023, 64, 88, 10, mostly sunny, 70, 40, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 8 miles, 0.01, 1015 hPa, 61, KXL
+9/2/2023, 66, 85, 15, partly cloudy, 72, 12, W, 06:31, 19:43, 6, Moderate, First Quarter, 7 miles, 0.03, 1010 hPa, 64, KXL
+9/3/2023, 62, 82, 30, scattered showers, 75, 20, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 6 miles, 0.12, 1008 hPa, 67, KXL
+9/4/2023, 60, 78, 60, rainy day, 80, 28, S, 06:33, 19:39, 4, Unhealthy, Full Moon, 5 miles, 0.30, 1005 hPa, 70, KXL
+9/5/2023, 68, 85, 20, sunny intervals, 70, 14, N, 06:34, 19:37, 8, Good, Waning Crescent, 9 miles, 0.02, 1012 hPa, 64, KXL
+9/6/2023, 64, 82, 40, scattered clouds, 72, 20, NE, 06:35, 19:35, 7, Moderate, Last Quarter, 8 miles, 0.05, 1007 hPa, 63, KXL
+9/7/2023, 62, 80, 50, showers likely, 78, 24, SE, 06:36, 19:33, 6, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1006 hPa, 66, KXL
+9/8/2023, 70, 88, 10, mostly sunny, 68, 10, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 10 miles, 0.03, 1013 hPa, 61, KXL
+9/9/2023, 72, 92, 5, clear skies, 62, 8, N, 06:38, 19:29, 10, Excellent, First Quarter, 11 miles, 0.00, 1016 hPa, 58, KXL
+9/10/2023, 68, 85, 30, isolated showers, 70, 18, E, 06:39, 19:27, 6, Poor, Waning Crescent, 8 miles, 0.10, 1009 hPa, 63, KXL
+9/11/2023, 66, 78, 60, rainy day, 82, 24, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 5 miles, 0.25, 1006 hPa, 66, KXL
+9/12/2023, 70, 82, 20, partly cloudy, 70, 14, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 9 miles, 0.04, 1013 hPa, 60, KXL
+9/13/2023, 75, 88, 5, clear skies, 64, 6, NW, 06:42, 19:21, 8, Excellent, Full Moon, 10 miles, 0.01, 1016 hPa, 55, KXL
+9/14/2023, 78, 85, 0, sunny day, 62, 5, N, 06:43, 19:19, 10, Good, Last Quarter, 11 miles, 0.00, 1018 hPa, 52, KXL
+9/15/2023, 73, 80, 15, sunny intervals, 68, 12, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 10 miles, 0.02, 1012 hPa, 56, KXL
+9/1/2023, 65, 88, 10, mostly sunny, 70, 40, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 8 miles, 0.01, 1015 hPa, 61, National Weather Service
+9/2/2023, 67, 85, 15, partly cloudy, 72, 12, W, 06:31, 19:43, 6, Moderate, First Quarter, 7 miles, 0.03, 1010 hPa, 64, National Weather Service
+9/3/2023, 63, 82, 30, scattered showers, 75, 20, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 6 miles, 0.12, 1008 hPa, 67, National Weather Service
+9/4/2023, 61, 78, 60, rainy day, 80, 28, S, 06:33, 19:39, 4, Unhealthy, Full Moon, 5 miles, 0.30, 1005 hPa, 70, National Weather Service
+9/5/2023, 69, 85, 20, sunny intervals, 70, 14, N, 06:34, 19:37, 8, Good, Waning Crescent, 9 miles, 0.02, 1012 hPa, 64, National Weather Service
+9/6/2023, 65, 82, 40, scattered clouds, 72, 20, NE, 06:35, 19:35, 7, Moderate, Last Quarter, 8 miles, 0.05, 1007 hPa, 63, National Weather Service
+9/7/2023, 63, 80, 50, showers likely, 78, 24, SE, 06:36, 19:33, 6, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1006 hPa, 66, National Weather Service
+9/8/2023, 71, 88, 10, mostly sunny, 68, 10, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 10 miles, 0.03, 1013 hPa, 61, National Weather Service
+9/9/2023, 73, 92, 5, clear skies, 62, 8, N, 06:38, 19:29, 10, Excellent, First Quarter, 11 miles, 0.00, 1016 hPa, 58, National Weather Service
+9/10/2023, 69, 85, 30, isolated showers, 70, 18, E, 06:39, 19:27, 6, Poor, Waning Crescent, 8 miles, 0.10, 1009 hPa, 63, National Weather Service
+9/11/2023, 67, 78, 60, rainy day, 82, 24, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 5 miles, 0.25, 1006 hPa, 66, National Weather Service
+9/12/2023, 71, 82, 20, partly cloudy, 70, 14, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 9 miles, 0.04, 1013 hPa, 60, National Weather Service
+9/13/2023, 76, 88, 5, clear skies, 64, 6, NW, 06:42, 19:21, 8, Excellent, Full Moon, 10 miles, 0.01, 1016 hPa, 55, National Weather Service
+9/14/2023, 77, 85, 0, sunny day, 62, 5, N, 06:43, 19:19, 10, Good, Last Quarter, 11 miles, 0.00, 1018 hPa, 52, National Weather Service
+9/15/2023, 74, 80, 15, sunny intervals, 68, 12, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 10 miles, 0.02, 1012 hPa, 56, National Weather Service
+9/1/2023, 67, 88, 10, mostly sunny, 70, 45, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 9 miles, 0.01, 1014 hPa, 62, NPR
+9/2/2023, 68, 85, 15, partly cloudy, 73, 10, W, 06:31, 19:43, 6, Moderate, First Quarter, 8 miles, 0.03, 1009 hPa, 65, NPR
+9/3/2023, 65, 82, 30, scattered showers, 75, 22, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 6 miles, 0.12, 1007 hPa, 68, NPR
+9/4/2023, 63, 78, 60, rainy day, 80, 30, S, 06:33, 19:39, 4, Unhealthy, Full Moon, 5 miles, 0.30, 1004 hPa, 71, NPR
+9/5/2023, 71, 85, 20, sunny intervals, 70, 16, N, 06:34, 19:37, 8, Good, Waning Crescent, 10 miles, 0.02, 1011 hPa, 65, NPR
+9/6/2023, 67, 82, 40, scattered clouds, 72, 18, NE, 06:35, 19:35, 7, Moderate, Last Quarter, 9 miles, 0.05, 1006 hPa, 64, NPR
+9/7/2023, 65, 80, 50, showers likely, 78, 26, SE, 06:36, 19:33, 6, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1005 hPa, 67, NPR
+9/8/2023, 73, 88, 10, mostly sunny, 68, 12, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 11 miles, 0.03, 1012 hPa, 62, NPR
+9/9/2023, 75, 92, 5, clear skies, 62, 8, N, 06:38, 19:29, 10, Excellent, First Quarter, 12 miles, 0.00, 1015 hPa, 59, NPR
+9/10/2023, 71, 85, 30, isolated showers, 70, 20, E, 06:39, 19:27, 6, Poor, Waning Crescent, 8 miles, 0.10, 1007 hPa, 64, NPR
+9/11/2023, 69, 78, 60, rainy day, 82, 28, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 5 miles, 0.25, 1004 hPa, 67, NPR
+9/12/2023, 73, 82, 20, partly cloudy, 70, 18, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 9 miles, 0.04, 1011 hPa, 61, NPR
+9/13/2023, 78, 88, 5, clear skies, 64, 6, NW, 06:42, 19:21, 8, Excellent, Full Moon, 10 miles, 0.01, 1014 hPa, 56, NPR
+9/14/2023, 79, 85, 0, sunny day, 62, 5, N, 06:43, 19:19, 10, Good, Last Quarter, 11 miles, 0.00, 1016 hPa, 53, NPR
+9/15/2023, 76, 80, 15, sunny intervals, 68, 12, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 10 miles, 0.02, 1010 hPa, 58, NPR
+9/1/2023, 66, 86, 10, mostly sunny, 72, 50, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 9 miles, 0.01, 1013 hPa, 61, The Weather Channel
+9/2/2023, 68, 84, 15, partly cloudy, 74, 11, W, 06:31, 19:43, 6, Moderate, First Quarter, 8 miles, 0.03, 1010 hPa, 64, The Weather Channel
+9/3/2023, 65, 80, 30, scattered showers, 76, 24, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 6 miles, 0.12, 1008 hPa, 67, The Weather Channel
+9/4/2023, 63, 75, 60, rainy day, 82, 32, S, 06:33, 19:39, 4, Unhealthy, Full Moon, 5 miles, 0.30, 1005 hPa, 70, The Weather Channel
+9/5/2023, 70, 82, 20, sunny intervals, 72, 18, N, 06:34, 19:37, 8, Good, Waning Crescent, 10 miles, 0.02, 1012 hPa, 63, The Weather Channel
+9/6/2023, 68, 78, 40, scattered clouds, 73, 20, NE, 06:35, 19:35, 7, Moderate, Last Quarter, 9 miles, 0.05, 1007 hPa, 62, The Weather Channel
+9/7/2023, 65, 75, 50, showers likely, 80, 28, SE, 06:36, 19:33, 6, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1006 hPa, 65, The Weather Channel
+9/8/2023, 72, 85, 10, mostly sunny, 70, 14, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 11 miles, 0.03, 1011 hPa, 60, The Weather Channel
+9/9/2023, 74, 88, 5, clear skies, 64, 9, N, 06:38, 19:29, 10, Excellent, First Quarter, 12 miles, 0.00, 1014 hPa, 57, The Weather Channel
+9/10/2023, 70, 82, 30, isolated showers, 70, 22, E, 06:39, 19:27, 6, Poor, Waning Crescent, 8 miles, 0.10, 1006 hPa, 62, The Weather Channel
+9/11/2023, 68, 78, 60, rainy day, 82, 30, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 5 miles, 0.25, 1004 hPa, 67, The Weather Channel
+9/12/2023, 72, 82, 20, partly cloudy, 72, 20, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 9 miles, 0.04, 1010 hPa, 61, The Weather Channel
+9/13/2023, 77, 85, 5, clear skies, 65, 8, NW, 06:42, 19:21, 8, Excellent, Full Moon, 10 miles, 0.01, 1013 hPa, 55, The Weather Channel
+9/14/2023, 78, 82, 0, sunny day, 64, 5, N, 06:43, 19:19, 10, Good, Last Quarter, 11 miles, 0.00, 1015 hPa, 52, The Weather Channel
+9/15/2023, 75, 78, 15, sunny intervals, 70, 15, NE, 06:44,19:19, 10, Good, Last Quarter, 11 miles, 0.00, 1015 hPa, 52, The Weather Channel
+9/1/2023, 68, 84, 10, mostly sunny, 72, 55, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 9 miles, 0.01, 1013 hPa, 61, Weather Underground
+9/2/2023, 70, 82, 15, partly cloudy, 74, 12, W, 06:31, 19:43, 6, Moderate, First Quarter, 8 miles, 0.03, 1010 hPa, 64, Weather Underground
+9/3/2023, 67, 80, 30, scattered showers, 76, 25, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 6 miles, 0.12, 1008 hPa, 67, Weather Underground
+9/4/2023, 65, 75, 60, rainy day, 82, 33, S, 06:33, 19:39, 4, Unhealthy, Full Moon, 5 miles, 0.30, 1005 hPa, 70, Weather Underground
+9/5/2023, 72, 80, 20, sunny intervals, 72, 20, N, 06:34, 19:37, 8, Good, Waning Crescent, 10 miles, 0.02, 1012 hPa, 63, Weather Underground
+9/6/2023, 70, 78, 40, scattered clouds, 73, 22, NE, 06:35, 19:35, 7, Moderate, Last Quarter, 9 miles, 0.05, 1007 hPa, 62, Weather Underground
+9/7/2023, 67, 75, 50, showers likely, 80, 30, SE, 06:36, 19:33, 6, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1006 hPa, 65, Weather Underground
+9/8/2023, 74, 82, 10, mostly sunny, 70, 16, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 11 miles, 0.03, 1011 hPa, 60, Weather Underground
+9/9/2023, 76, 85, 5, clear skies, 64, 11, N, 06:38, 19:29, 10, Excellent, First Quarter, 12 miles, 0.00, 1014 hPa, 57, Weather Underground
+9/10/2023, 72, 80, 30, isolated showers, 70, 24, E, 06:39, 19:27, 6, Poor, Waning Crescent, 8 miles, 0.10, 1006 hPa, 62, Weather Underground
+9/11/2023, 70, 78, 60, rainy day, 82, 32, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 5 miles, 0.25, 1004 hPa, 67, Weather Underground
+9/12/2023, 74, 82, 20, partly cloudy, 72, 22, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 9 miles, 0.04, 1010 hPa, 61, Weather Underground
+9/13/2023, 79, 85, 5, clear skies, 65, 9, NW, 06:42, 19:21, 8, Excellent, Full Moon, 10 miles, 0.01, 1013 hPa, 55, Weather Underground
+9/14/2023, 80, 82, 0, sunny day, 64, 6, N, 06:43, 19:19, 10, Good, Last Quarter, 11 miles, 0.00, 1015 hPa, 52, Weather Underground
+9/15/2023, 77, 78, 15, sunny intervals, 70, 14, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 10 miles, 0.02, 1010 hPa, 58, Weather Underground
+9/1/2023, 67, 85, 10, mostly sunny, 73, 51, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 9 miles, 0.01, 1013 hPa, 60, Weather.com
+9/2/2023, 69, 83, 15, partly cloudy, 75, 13, W, 06:31, 19:43, 6, Moderate, First Quarter, 8 miles, 0.03, 1010 hPa, 63, Weather.com
+9/3/2023, 66, 79, 30, scattered showers, 77, 26, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 6 miles, 0.12, 1008 hPa, 66, Weather.com
+9/4/2023, 64, 74, 60, rainy day, 83, 34, S, 06:33, 19:39, 4, Unhealthy, Full Moon, 5 miles, 0.30, 1005 hPa, 69, Weather.com
+9/5/2023, 71, 81, 20, sunny intervals, 73, 19, N, 06:34, 19:37, 8, Good, Waning Crescent, 10 miles, 0.02, 1012 hPa, 62, Weather.com
+9/6/2023, 69, 79, 40, scattered clouds, 74, 22, NE, 06:35, 19:35, 7, Moderate, Last Quarter, 9 miles, 0.05, 1007 hPa, 61, Weather.com
+9/7/2023, 66, 74, 50, showers likely, 81, 31, SE, 06:36, 19:33, 6, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1006 hPa, 64, Weather.com
+9/8/2023, 73, 80, 10, mostly sunny, 71, 17, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 11 miles, 0.03, 1011 hPa, 59, Weather.com
+9/9/2023, 75, 83, 5, clear skies, 65, 12, N, 06:38, 19:29, 10, Excellent, First Quarter, 12 miles, 0.00, 1014 hPa, 56, Weather.com
+9/10/2023, 71, 79, 30, isolated showers, 71, 25, E, 06:39, 19:27, 6, Poor, Waning Crescent, 8 miles, 0.10, 1006 hPa, 61, Weather.com
+9/11/2023, 69, 77, 60, rainy day, 83, 33, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 5 miles, 0.25, 1004 hPa, 66, Weather.com
+9/12/2023, 73, 80, 20, partly cloudy, 73, 21, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 9 miles, 0.04, 1010 hPa, 60, Weather.com
+9/13/2023, 78, 83, 5, clear skies, 66, 10, NW, 06:42, 19:21, 8, Excellent, Full Moon, 10 miles, 0.01, 1013 hPa, 54, Weather.com
+9/14/2023, 79, 80, 0, sunny day, 65, 6, N, 06:43, 19:19, 10, Good, Last Quarter, 11 miles, 0.00, 1015 hPa, 51, Weather.com
+9/15/2023, 76, 75, 15, sunny intervals, 71, 15, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 10 miles, 0.02, 1010 hPa, 57, Weather.com
+9/1/2023, 66, 86, 10, mostly sunny, 73, 52, NW, 06:30, 19:45, 7, Good, Waxing Crescent, 9 miles, 0.01, 1013 hPa, 60, Weather.gov
+9/2/2023, 68, 84, 15, partly cloudy, 76, 14, W, 06:31, 19:43, 6, Moderate, First Quarter, 8 miles, 0.03, 1010 hPa, 63, Weather.gov
+9/3/2023, 65, 80, 30, scattered showers, 77, 27, SW, 06:32, 19:41, 5, Poor, Waning Gibbous, 6 miles, 0.12, 1008 hPa, 66, Weather.gov
+9/4/2023, 63, 76, 60, rainy day, 83, 35, S, 06:33, 19:39, 4, Unhealthy, Full Moon, 5 miles, 0.30, 1005 hPa, 69, Weather.gov
+9/5/2023, 71, 82, 20, sunny intervals, 73, 20, N, 06:34, 19:37, 8, Good, Waning Crescent, 10 miles, 0.02, 1012 hPa, 62, Weather.gov
+9/6/2023, 69, 80, 40, scattered clouds, 74, 23, NE, 06:35, 19:35, 7, Moderate, Last Quarter, 9 miles, 0.05, 1007 hPa, 61, Weather.gov
+9/7/2023, 66, 76, 50, showers likely, 82, 32, SE, 06:36, 19:33, 6, Unhealthy, Waning Gibbous, 6 miles, 0.18, 1006 hPa, 64, Weather.gov
+9/8/2023, 73, 81, 10, mostly sunny, 71, 18, NW, 06:37, 19:31, 9, Good, Waxing Crescent, 11 miles, 0.03, 1011 hPa, 59, Weather.gov
+9/9/2023, 75, 84, 5, clear skies, 65, 13, N, 06:38, 19:29, 10, Excellent, First Quarter, 12 miles, 0.00, 1014 hPa, 56, Weather.gov
+9/10/2023, 71, 80, 30, isolated showers, 71, 26, E, 06:39, 19:27, 6, Poor, Waning Crescent, 8 miles, 0.10, 1006 hPa, 61, Weather.gov
+9/11/2023, 69, 78, 60, rainy day, 83, 34, S, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 5 miles, 0.25, 1004 hPa, 66, Weather.gov
+9/12/2023, 73, 81, 20, partly cloudy, 73, 23, W, 06:41, 19:23, 7, Good, Waxing Gibbous, 9 miles, 0.04, 1010 hPa, 60, Weather.gov
+9/13/2023, 78, 84, 5, clear skies, 66, 11, NW, 06:42, 19:21, 8, Excellent, Full Moon, 10 miles, 0.01, 1013 hPa, 54, Weather.gov
+9/14/2023, 79, 82, 0, sunny day, 65, 7, N, 06:43, 19:19, 10, Good, Last Quarter, 11 miles, 0.00, 1015 hPa, 51, Weather.gov
+9/15/2023, 76, 78, 15, sunny intervals, 71, 16, NE, 06:44, 19:17, 8, Excellent, Waxing Crescent, 10 miles, 0.02, 1010 hPa, 57, Weather.gov
+9/1/2023, 58, 88, 15, partly sunny, 70, 4, N, 06:30, 19:45, 6, Good, Waxing Crescent, 9 miles, 0.07, 1012 hPa, 56, WeatherWizard
+9/2/2023, 64, 90, 25, scattered clouds, 75, 7, NE, 06:31, 19:43, 5, Moderate, FirstQuarter, 10 miles, 0.04, 1009 hPa, 60, WeatherWizard
+9/3/2023, 55, 82, 60, showers likely, 80, 10, E, 06:32, 19:41, 3, Unhealthy, Waning Gibbous, 8 miles, 0.15, 1005 hPa, 62, WeatherWizard
+9/4/2023, 52, 75, 80, rainy day, 85, 12, SE, 06:33, 19:39, 2, Unhealthy, FullMoon, 7 miles, 0.30, 1003 hPa, 64, WeatherWizard
+9/5/2023, 60, 80, 10, mostly sunny, 65, 5, NW, 06:34, 19:37, 8, Good, Waning Crescent, 10 miles, 0.02, 1010 hPa, 58, WeatherWizard
+9/6/2023, 62, 84, 20, partly cloudy, 70, 8, W, 06:35, 19:35, 6, Moderate, Last Quarter, 9 miles, 0.05, 1008 hPa, 60, WeatherWizard
+9/7/2023, 58, 78, 40, scattered showers, 75, 11, SW, 06:36, 19:33, 5, Poor, Waning Gibbous, 7 miles, 0.12, 1006 hPa, 62, WeatherWizard
+9/8/2023, 64, 85, 5, clear skies, 62, 6, N, 06:37, 19:31, 9, Excellent, Waxing Crescent, 12 miles, 0.01, 1013 hPa, 56, WeatherWizard
+9/9/2023, 68, 92, 0, sunny day, 58, 5, NW, 06:38, 19:29, 10, Good, FirstQuarter, 13 miles, 0.00, 1016 hPa, 53, WeatherWizard
+9/10/2023, 63, 88, 25, scattered clouds, 70, 9, NE, 06:39, 19:27, 6, Moderate, Waning Crescent, 9 miles, 0.08, 1008 hPa, 59, WeatherWizard
+9/11/2023, 58, 78, 50, showers likely, 75, 13, E, 06:40, 19:25, 4, Unhealthy, Waning Gibbous, 6 miles, 0.20, 1006 hPa, 61, WeatherWizard
+9/12/2023, 62, 85, 10, mostly sunny, 68, 6, N, 06:41, 19:23, 7, Good, Waxing Gibbous, 11 miles, 0.03, 1012 hPa, 57, WeatherWizard
+9/13/2023, 70, 88, 0, clear skies, 57, 4, NW, 06:42, 19:21, 8, Excellent, FullMoon, 12 miles, 0.00, 1015 hPa, 51, WeatherWizard
+9/14/2023, 72, 88, 0, sunny day, 54, 3, N, 06:43, 19:19, 10, Good, Last Quarter, 13 miles, 0.00, 1017 hPa, 49, WeatherWizard
+9/15/2023, 68, 82, 10, mostly sunny, 62, 6, NE, 06:44, 19:17, 7, Good, Waxing Crescent, 10 miles, 0.02, 1010 hPa, 55, WeatherWizard
