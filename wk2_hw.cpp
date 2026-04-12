@@ -40,28 +40,36 @@ int main() {
     LoadData(datas, headings);
 
     // Welcome User
-    cout << "Welcome to WeatherPUD, where you get the weather the way you want." << endl;
-    cout << "To get your forecast, you will select your choices of source and date." << endl;
-
+    cout << "Welcome to WeatherPUD, where you get the weather the way you want." << endl << endl;
+    
     // Get Source Input
+    cout << "To get your forecast, you will select your choices of source and date." << endl;
     cout << "Please choose a source: " << endl; // Prompt User
-    for (int idx = 0; idx < SOURCES; ++idx) { // Display Source
-        if (idx % 3 == 0)
+
+    for (int source = 0; source < SOURCES; ++source) { // Display Source
+        if (source % 3 == 0)
             cout << endl;
-        cout << right << setw(2) << idx << ". " << left << setw(22) << datas[idx][0][SOURCE_IDX];
+        cout << right << setw(2) << source << ". " << left << setw(22) << datas[source][0][SOURCE_IDX];
     }
     cout << endl;
 
-    cout << "Your Selection: ";
+    cout << "\nYour Selection: ";
     cin >> selection;
     cout << endl;
 
     cout << "We are adjusting our satellite dish now to intercept weather broadcasts originating from NPR." << endl; 
     cout << "We're doing this just for you!" << endl << endl;
     
-    cout << "Please choose the day for which you would like the weather forcast." << endl << endl;
+    // Get Date Input
+    cout << "Please choose the day for which you would like the weather forcast:" << endl << endl;
 
-    // Purge Data
+    for (int date = 0; date < DATES; date++) {
+        if (date % 5 == 0)
+            cout << endl;
+        cout << right << setw(2) << date << ". " << left << setw(12) << datas[selection][date][0];
+    }
+
+    // Purge Data 
 
     // End Normally
     return 0;
