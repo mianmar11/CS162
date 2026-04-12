@@ -34,7 +34,8 @@ int main() {
     // Init Variables
     string headings[COLS];              // Header Name
     string datas[SOURCES][DATES][COLS]; // Collection of Daily Weather Data stored in a Corresponding Source
-    int selection = SENTINEL;
+    int target_source = SENTINEL;
+    int target_date = SENTINEL;
 
     // Load Data
     LoadData(datas, headings);
@@ -53,22 +54,35 @@ int main() {
     }
     cout << endl;
 
-    cout << "\nYour Selection: ";
-    cin >> selection;
+    cout << "\nYour selection: ";
+    cin >> target_source;
     cout << endl;
 
-    cout << "We are adjusting our satellite dish now to intercept weather broadcasts originating from NPR." << endl; 
+    cout << "We are adjusting our satellite dish now to intercept weather broadcasts originating from " << datas[target_source][0][SOURCE_IDX] << "." << endl; 
     cout << "We're doing this just for you!" << endl << endl;
     
     // Get Date Input
-    cout << "Please choose the day for which you would like the weather forcast:" << endl << endl;
+    cout << "Please choose the day for which you would like the weather forcast:" << endl;
 
     for (int date = 0; date < DATES; date++) {
         if (date % 5 == 0)
             cout << endl;
-        cout << right << setw(2) << date << ". " << left << setw(12) << datas[selection][date][0];
+        cout << right << setw(2) << date << ". " << left << setw(12) << datas[target_source][date][0];
     }
+    cout << endl;
 
+    cout << "\nYour selection: ";
+    cin >> target_date; 
+    cout << endl;
+    
+    cout << "Weather Report from " << datas[target_source][0][SOURCE_IDX] << " concerning " << datas[target_source][target_date][0] << "..." << endl << endl; 
+
+    // Display Weather Report 
+    for (int idx=0; idx<5; idx++) { 
+        cout << right << setw(22) << headings[idx] << ": " << left << setw(10) << datas[target_source][target_date][idx] << endl;
+    }
+    cout << right << setw(22) << headings[SOURCE_IDX] << ": " << left << setw(10) << datas[target_source][target_date][SOURCE_IDX] << endl;
+    
     // Purge Data 
 
     // End Normally
