@@ -6,6 +6,8 @@ CS162 Spring - Mitch Priestley
 Purpose: 
 
 Specification: 
+
+Credits: StackOverflow
 */
 
 #include <iostream>
@@ -46,12 +48,13 @@ int main() {
     for (int idx = 0; idx < SOURCES; ++idx) { // Display Source
         if (idx % 3 == 0)
             cout << endl;
-        cout << setw(2) << right << idx << ". " << datas[idx][0][SOURCE_IDX];
+        cout << right << setw(2) << idx << ". " << left << setw(22) << datas[idx][0][SOURCE_IDX];
     }
     cout << endl;
 
     cout << "Your Selection: ";
     cin >> selection;
+    cout << endl;
 
     cout << "We are adjusting our satellite dish now to intercept weather broadcasts originating from NPR." << endl; 
     cout << "We're doing this just for you!" << endl << endl;
