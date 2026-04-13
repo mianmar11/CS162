@@ -3,7 +3,9 @@ Zaw Ye Yaint Naing
 
 CS162 Spring - Mitch Priestley
 
-Purpose: 
+Purpose: This purpose of this program is to get the weather report from a specific
+date from a specific source. It will display these weather reports such as: 
+date, low, high, chance of rain, summary, source. 
 
 Specification: 
 
@@ -29,6 +31,9 @@ const int
 
 // Function Prototypes
 void LoadData(string [][DATES][COLS], string []);
+void GetSource(int &, string [][DATES][COLS]);
+void GetDate(int &, string [][COLS]);
+void DisplayReport(string [], string [][DATES][COLS], int, int);
 
 int main() {
     // Init Variables
@@ -44,45 +49,14 @@ int main() {
     cout << "Welcome to WeatherPUD, where you get the weather the way you want." << endl << endl;
     
     // Get Source Input
-    cout << "To get your forecast, you will select your choices of source and date." << endl;
-    cout << "Please choose a source: " << endl; // Prompt User
+    GetSource(target_source, datas);
 
-    for (int source = 0; source < SOURCES; ++source) { // Display Source
-        if (source % 3 == 0)
-            cout << endl;
-        cout << right << setw(2) << source << ". " << left << setw(22) << datas[source][0][SOURCE_IDX];
-    }
-    cout << endl;
-
-    cout << "\nYour selection: ";
-    cin >> target_source;
-    cout << endl;
-
-    cout << "We are adjusting our satellite dish now to intercept weather broadcasts originating from " << datas[target_source][0][SOURCE_IDX] << "." << endl; 
-    cout << "We're doing this just for you!" << endl << endl;
-    
     // Get Date Input
-    cout << "Please choose the day for which you would like the weather forcast:" << endl;
-
-    for (int date = 0; date < DATES; date++) {
-        if (date % 5 == 0)
-            cout << endl;
-        cout << right << setw(2) << date << ". " << left << setw(12) << datas[target_source][date][0];
-    }
-    cout << endl;
-
-    cout << "\nYour selection: ";
-    cin >> target_date; 
-    cout << endl;
-    
-    cout << "Weather Report from " << datas[target_source][0][SOURCE_IDX] << " concerning " << datas[target_source][target_date][0] << "..." << endl << endl; 
+    GetDate(target_date, datas[target_source]);
 
     // Display Weather Report 
-    for (int idx=0; idx<5; idx++) { 
-        cout << right << setw(22) << headings[idx] << ": " << left << setw(10) << datas[target_source][target_date][idx] << endl;
-    }
-    cout << right << setw(22) << headings[SOURCE_IDX] << ": " << left << setw(10) << datas[target_source][target_date][SOURCE_IDX] << endl;
-    
+    DisplayReport(headings, datas, target_source, target_date);
+
     // Purge Data 
 
     // End Normally
@@ -113,4 +87,51 @@ void LoadData(string arr[][DATES][COLS], string headings[]) {
             getline(infile, arr[source][row][SOURCE_IDX]); // get source
         }
     }
+}
+
+void GetSource(int &target, string arr[][DATES][COLS]) {
+    // Prompt User
+    cout << "To get your forecast, you will select your choices of source and date." << endl;
+    cout << "Please choose a source: " << endl; // Prompt User
+
+    // Display a list of Weather Sources
+    for (int source = 0; source < SOURCES; ++source) { 
+        if (source % 3 == 0)
+            cout << endl;
+        cout << right << setw(2) << source << ". " << left << setw(22) << arr[source][0][SOURCE_IDX];
+    }
+    cout << endl;
+
+    // Get Input
+    cout << "\nYour selection: ";
+    cin >> target;
+    cout << endl;
+
+    cout << "We are adjusting our satellite dish now to intercept weather broadcasts originating from " << arr[target][0][SOURCE_IDX] << "." << endl; 
+    cout << "We're doing this just for you!" << endl << endl;
+
+}
+
+void GetDate(int &target, string date_arr[][COLS]) {
+    cout << "Please choose the day for which you would like the weather forcast:" << endl;
+
+    for (int date = 0; date < DATES; date++) {
+        if (date % 5 == 0)
+            cout << endl;
+        cout << right << setw(2) << date << ". " << left << setw(12) << date_arr[date][0];
+    }
+    cout << endl;
+
+    cout << "\nYour selection: ";
+    cin >> target; 
+    cout << endl;
+    
+    cout << "Weather Report from " << date_arr[0][SOURCE_IDX] << " concerning " << date_arr[target][0] << "..." << endl << endl; 
+}
+
+void DisplayReport(string headings[], string arr[][DATES][COLS], int source, int date) {
+    for (int idx=0; idx<5; idx++) { 
+        cout << right << setw(22) << headings[idx] << ": " << left << setw(10) << arr[source][date][idx] << endl;
+    }
+    cout << right << setw(22) << headings[SOURCE_IDX] << ": " << left << setw(10) << arr[source][date][SOURCE_IDX] << endl;
 }
