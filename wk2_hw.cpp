@@ -7,7 +7,10 @@ Purpose: This purpose of this program is to get the weather report from a specif
 date from a specific source. It will display these weather reports such as: 
 date, low, high, chance of rain, summary, source. 
 
-Specification: 
+Specification: This program loads weather data from the pre-existing file, display 
+the list of sources of each report to user, prompt user to choose source, display
+the list of dates of each report data to user, prompt user to choose the date, then
+display the weather report of (Date, Low, High, COR, Summary, Source).
 
 Credits: StackOverflow
 */
