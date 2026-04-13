@@ -27,6 +27,7 @@ const int
     SOURCES = 18,   // number of sources: AccuWeather, BBC Weather, etc...
     DATES = 15,     // Rows of data cases (heading not included)
     COLS = 18,      // Total columns, but actually only display 6 (Date, Low, High, COR, Summary, Source)
+    COLS_NUM = 6,   // Number of cols to display
     SOURCE_IDX = 17;
 
 // Function Prototypes
@@ -37,7 +38,7 @@ void DisplayReport(string [], string [][DATES][COLS], int, int);
 
 int main() {
     // Init Variables
-    string headings[COLS];              // Header Name
+    string* headings = new string[COLS];// Header Name
     string datas[SOURCES][DATES][COLS]; // Collection of Daily Weather Data stored in a Corresponding Source
     int target_source = SENTINEL;
     int target_date = SENTINEL;
@@ -58,12 +59,29 @@ int main() {
     DisplayReport(headings, datas, target_source, target_date);
 
     // Purge Data 
+    target_date = target_source = SENTINEL;
+
+    memset(headings, 0, COLS * sizeof(string));
+    delete[] headings; 
+    headings = nullptr; 
+
+    for (int source = 0; source < SOURCES; source++) {
+        for (int date = 0; date < DATES; date++) {
+            for (int data = 0; data < COLS; data++) {
+                datas[source][date][data] = string(datas[source][date][data].length(), ' ');
+                memset(datas[source][date][data].data(), 0, datas[source][date][data].capacity());
+            }
+        }
+    }
 
     // End Normally
     return 0;
 }
 
-
+// Purpose: Laod the contents from text file into the array
+// Speciifcation: loop contents from first line first to store headings, then 
+//                loop each lines and each contents
+// Arguments: Required 3D data array and 1D headings array
 void LoadData(string arr[][DATES][COLS], string headings[]) {
     ifstream infile(FILENAME);
 
@@ -89,6 +107,9 @@ void LoadData(string arr[][DATES][COLS], string headings[]) {
     }
 }
 
+// Purpose: To get the source from user for accessing dates
+// Speciifcation: Display the list of sources, prompt user and get user input for specific source
+// Arguments: Required int target source and 3D data array
 void GetSource(int &target, string arr[][DATES][COLS]) {
     // Prompt User
     cout << "To get your forecast, you will select your choices of source and date." << endl;
@@ -112,6 +133,9 @@ void GetSource(int &target, string arr[][DATES][COLS]) {
 
 }
 
+// Purpose: To get the date from user for weather report
+// Speciifcation: Display the list of dates, prompt user and get user input for specific date
+// Arguments: Required int passed-by-reference target date and 3D string array
 void GetDate(int &target, string date_arr[][COLS]) {
     cout << "Please choose the day for which you would like the weather forcast:" << endl;
 
@@ -129,9 +153,12 @@ void GetDate(int &target, string date_arr[][COLS]) {
     cout << "Weather Report from " << date_arr[0][SOURCE_IDX] << " concerning " << date_arr[target][0] << "..." << endl << endl; 
 }
 
+// Purpose: To display selected weather data
+// Speciifcation: Loops through 5 first cols and display, then seperatly display last source col
+// Arguments: Required 1D headings array, 3D string array, source and date
 void DisplayReport(string headings[], string arr[][DATES][COLS], int source, int date) {
-    for (int idx=0; idx<5; idx++) { 
-        cout << right << setw(22) << headings[idx] << ": " << left << setw(10) << arr[source][date][idx] << endl;
+    for (int idx=0; idx<COLS_NUM-1; idx++) {
+        cout << right << setw(22) << *(headings + idx) << ": " << left << setw(10) << arr[source][date][idx] << endl;
     }
-    cout << right << setw(22) << headings[SOURCE_IDX] << ": " << left << setw(10) << arr[source][date][SOURCE_IDX] << endl;
+    cout << right << setw(22) << *(headings + SOURCE_IDX) << ": " << left << setw(10) << arr[source][date][SOURCE_IDX] << endl;
 }
