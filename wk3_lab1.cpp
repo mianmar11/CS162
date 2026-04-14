@@ -9,15 +9,19 @@ Specfication:
 */
 
 #include <iostream> 
-#include <string>
+#include <string>   // included operator=(char[])
 #include <cstring>
 
 using namespace std;
 
 int main() {
-    string name; // since string is an object, name is an instnace of string object (OOP)
+    string name("Giorno Gorvana"); // (since string is an object, name is an instnace of string object (OOP))
 
-    name = "Zaw Ye Yaint Naing";                    
+    char city[11] = "Seattle"; // (C-string)
+
+    name = "Zaw Ye Yaint Naing"; // (RHS is a character array which is a C string)
+
+    cout << city << endl;
 
     return 0;
 }
