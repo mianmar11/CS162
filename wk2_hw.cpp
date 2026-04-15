@@ -12,7 +12,7 @@ the list of sources of each report to user, prompt user to choose source, displa
 the list of dates of each report data to user, prompt user to choose the date, then
 display the weather report of (Date, Low, High, COR, Summary, Source).
 
-Credits: StackOverflow
+Credits: StackOverflow, CS161 Lab, 
 */
 
 #include <iostream>
@@ -38,6 +38,7 @@ void LoadData(string [][DATES][COLS], string []);
 void GetSource(int &, string [][DATES][COLS]);
 void GetDate(int &, string [][COLS]);
 void DisplayReport(string [], string [][DATES][COLS], int, int);
+void GetInput(int &, int);
 
 int main() {
     // Init Variables
@@ -110,6 +111,20 @@ void LoadData(string arr[][DATES][COLS], string headings[]) {
     }
 }
 
+// Purpose: Validate the user input to make sure that they are entering correct data type and answer
+// Specification: This function will check if the user entered correct datatype in a loop and then check
+// if it is within the range of the answers 
+// Arguments: Required int input and range
+void GetInput(int &input, int max_range) {
+
+    // Validate datatype 
+    while (!(cin >> input) || (input < 0) || (input >= max_range)) {
+        cout << "Error! Invalid Input. \nPlease re-enter a integer: ";
+        cin.clear();
+        cin.ignore(1024, '\n');
+    }
+}
+
 // Purpose: To get the source from user for accessing dates
 // Speciifcation: Display the list of sources, prompt user and get user input for specific source
 // Arguments: Required int target source and 3D data array
@@ -128,7 +143,7 @@ void GetSource(int &target, string arr[][DATES][COLS]) {
 
     // Get Input
     cout << "\nYour selection: ";
-    cin >> target;
+    GetInput(target, SOURCES);
     cout << endl;
 
     cout << "We are adjusting our satellite dish now to intercept weather broadcasts originating from " << arr[target][0][SOURCE_IDX] << "." << endl; 
@@ -150,7 +165,7 @@ void GetDate(int &target, string date_arr[][COLS]) {
     cout << endl;
 
     cout << "\nYour selection: ";
-    cin >> target; 
+    GetInput(target, DATES);
     cout << endl;
     
     cout << "Weather Report from " << date_arr[0][SOURCE_IDX] << " concerning " << date_arr[target][0] << "..." << endl << endl; 
