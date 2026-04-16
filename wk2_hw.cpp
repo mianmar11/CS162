@@ -39,6 +39,7 @@ void GetSource(int &, string [][DATES][COLS]);
 void GetDate(int &, string [][COLS]);
 void DisplayReport(string [], string [][DATES][COLS], int, int);
 void GetInput(int &, int);
+void PurgeData(int&, int&, string[], string[][DATES][COLS]);
 
 int main() {
     // Init Variables
@@ -63,20 +64,7 @@ int main() {
     DisplayReport(headings, datas, target_source, target_date);
 
     // Purge Data 
-    target_date = target_source = SENTINEL;
-
-    memset(headings, 0, COLS * sizeof(string));
-    delete[] headings; 
-    headings = nullptr; 
-
-    for (int source = 0; source < SOURCES; source++) {
-        for (int date = 0; date < DATES; date++) {
-            for (int data = 0; data < COLS; data++) {
-                datas[source][date][data] = string(datas[source][date][data].length(), ' ');
-                memset(datas[source][date][data].data(), 0, datas[source][date][data].capacity());
-            }
-        }
-    }
+    PurgeData(target_date, target_source, headings, datas);
 
     // End Normally
     return 0;
@@ -179,4 +167,22 @@ void DisplayReport(string headings[], string arr[][DATES][COLS], int source, int
         cout << right << setw(22) << *(headings + idx) << ": " << left << setw(10) << arr[source][date][idx] << endl;
     }
     cout << right << setw(22) << *(headings + SOURCE_IDX) << ": " << left << setw(10) << arr[source][date][SOURCE_IDX] << endl;
+}
+
+void PurgeData(int &data1, int &data2, string arr1[], string arr2[][DATES][COLS]) {
+    
+    data1 = data2 = SENTINEL;
+
+    memset(arr1, 0, COLS * sizeof(string));
+    delete[] arr1; 
+    arr1 = nullptr; 
+
+    for (int source = 0; source < SOURCES; source++) {
+        for (int date = 0; date < DATES; date++) {
+            for (int data = 0; data < COLS; data++) {
+                arr2[source][date][data] = string(arr2[source][date][data].length(), ' ');
+                memset(arr2[source][date][data].data(), 0, arr2[source][date][data].capacity());
+            }
+        }
+    }
 }
