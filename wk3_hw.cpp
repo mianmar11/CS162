@@ -8,10 +8,11 @@ int main() {
     string username;        // player name
 
     // Welcome User
-    cout << "Hello Stranger..." << endl;
-    cout << "Your name...? ";
+    cout << "Hello Stranger.." << endl;
+    cout << "Your name...?: ";
     getline(cin, username);
-    cout << "Welcome to the "
+    cout << "Hello, " << username << "." << endl;
+    cout << "\nWelcome to .{Silver Grit}." << endl;
 
     // 
 
