@@ -1,9 +1,10 @@
 /*
 
-Credits: StackOverflow. cppreference.com
+Credits: StackOverflow. cppreference.com, W3School, IBM, Microsoft Learn
 */
 
 #include <iostream>
+#include <cstring>
 #include <string>
 #include <chrono>
 #include <thread>
@@ -12,7 +13,8 @@ using namespace std;
 using namespace chrono_literals;
 using namespace this_thread;
 
-void DisplayTxt(string txt);        // Display text at a pace just like in actual games
+// Func Prototypes
+void RenderText(const char[], char ending = '\n');        // Display text at a pace just like in actual games
 
 int main() {
     // Init Variable
@@ -21,30 +23,26 @@ int main() {
     int current_loc {};             // Current location that player is in
 
     // Welcome User
-    cout << "Hello Stranger.." << endl;
-    cout << "Your name...?: ";
+    RenderText("Hello Stranger..");
+    RenderText("Your name...?: ", '\0');
     getline(cin, username);
-    cout << "Hello, " << username << "." << endl;
-    cout << "\nWelcome to .{Silver Grit}." << endl;
-
+    RenderText("Hello, ", '\0');
+    RenderText(username.c_str());
+    RenderText("\nWelcome to .{Silver Grit}.");
+    cout << endl;
+         
     cout << "Hello stranger, you are.." << endl;
     cout << "[ENTER To Continue]" << endl;
     
-    char dialogue[] = "Aren't you one of those heros that fought the Mighty Evil days before?";
-
-    for (int idx=0; dialogue[idx] != '\0'; idx++) {
-        cout << dialogue[idx] << flush;
-        sleep_for(20ms);
-    }
-
     cout  << locations[current_loc];
 
     return 0;
 }
 
-void DisplayTxt(char msg[], int speed=20) {
+void RenderText(const char msg[], char ending) {
     for (int idx=0; msg[idx] != '\0'; idx++) {
         cout << msg[idx] << flush;
-        sleep_for(20ms);
+        sleep_for(35ms);
     }
+    cout << ending;
 }
