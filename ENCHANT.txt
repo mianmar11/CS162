@@ -1,0 +1,758 @@
+@FILE ENCHANTED.TXT
+@ENCHANTED FOREST GAME
+@11/27/19
+
+@Use this file to create your own custom text-adventure game!
+@File segments are MAP_SIZE, ROOMS, OBJECTS, OBSTACLES, SYNONYMS, VERBS, RESPONSES, HINTS, LOCATIONS.
+@Begin file with comments lines (@) identifying filename and name of game.
+@Under MAP_SIZE, indicate the number of locations on the map.
+@Under ROOMS, indicate the number of rooms to which you are assigning names, then list each room# and name.
+@Under OBJECTS, indicate the number of objects, then list each seq. number, obj name, points (for treasures), weight; short description for inventory; semi-colon; then write description.
+@Identify treasures (as OBJECTS) with points and an exclamation point at the end of their description (recommended).
+
+
+
+@OBSTACLES, 
+@Under SYNONYMS, list the keyword phrase then, on the same line, all synonomous two-word phrases separated by a space and optionally a comma.
+
+@VERBS, RESPONSES, HINTS, 
+@Under LOCATIONS declare the number of locations (to match MAP_SIZE, above). 
+@Beginning on the next line, number each location sequentially beginning at 1 and provide 4 numeric links (NSEW) followed by text description of location, using \ for line breaks.
+@End the file with the <END> tag
+
+@FILE ENCHANTED.TXT
+@ENCHANTED FOREST GAME
+
+<PARAMS>
+0 1 1 1			@DEBUG, VERBOSE, TRACE_LOCATION, PRIVILEGED
+
+
+<MAP_SIZE>
+228
+
+<ROOMS>			@ (*)tools; ($)treasures  This category can assign a name to any map location
+  7 Marble Hall
+ 14 Hobby Room		@*
+ 24 Kitchen		@*
+ 26 Junk Room		@*
+ 35 Programmers' Room
+ 38 Secretarial Room	@*
+ 42 Office
+ 41 Tool Room		@*
+ 48 Gold Room		@($) adjacent
+ 53 Dead End
+ 95 Field
+ 96 Castle
+137 Pond
+140 Stream
+149 Weapon Room		@*
+160 Mummy's Tomb
+161 Witch's Forest
+162 Bloody Woods
+163 Vampire Cave	@($)
+165 Ruby Room		@($)
+170 Green Room		@($)
+173 Guard's Room
+174 Silver Room		@($)
+177 Grue's Cave
+190 Grue's Bedroom	@($)
+191 Grue's Bathroom
+198 Closet
+201 Cellar		@*
+204 Attic
+210 Coffin		@($)
+224 Utility Room	@*
+226 Treasure Room	@($)
+
+@0 a_model	  1  50   2	Short descr; Long description. @Initial location = 1; points = 50 (treasures only); weight = 2 lbs.
+
+<OBJECTS>
+@# name		loc pts  wt	short descr; long description
+ 1 rod		 51   0   0	Silver rod; There is a silver rod here.
+ 2 diamond	 68 100   0	Fabulous diamond; There is a fabulous diamond here!
+ 3 tooth	163  12   0	Gold-filled tooth; There is a gold-filled tooth here!
+ 4 necklace	164 100   0	Necklace; You see a wonderful necklace.
+ 5 rubies	165 100   0	Rubies; There are rubies here.
+ 6 emeralds	170 100   0	%sparkling: Sparkling emeralds; Emeralds sparkle nearby. (shine emeralds)
+				%dull: Emeralds in need of shining; There are emeralds here. (age emeralds)
+ 7 silver	174 100   0	Silver; There is silver here.
+ 8 ring		172 100   0	Ring; A valuable ring is here!
+ 9 gems		188 100   0	Gems; You can see gems!
+10 bracelet	190 100   0	Women's bracelet; A women's bracelet is here!
+11 cross	205   0   0	Silver cross; A silver cross is here.
+12 lantern	206   0   0 	Jack-o'-lantern; There is a jack-o'-lantern here.
+13 chicken	207   0   0	Rubber chicken; There is a rubber chicken here.
+14 eggs		208   0   0 	Eggs; There are eggs here.
+15 cash		210 100   0	Cash; There is cash here.
+16 candles	211   0   0 	Candles; There are candles here.
+17 confetti	212   0   0	Confetti; You can see confetti.
+18 leash	201   0   0	Dog's leash; A dog's leash is lying nearby.
+19 wand 	197   0   0	Magic wand; There is a magic wand here.
+20 football	194   0   0	Football; There is an old football here.
+21 bucket	 38   0   0	Bucket of water; There is a bucket of water here.
+22 list		 40   0   0	List of numbers; There is a list of numbers here.
+23 toys		 26   0   0	Chidren's Toys; There are chldren's toys here.
+24 shoe		 26   0   0	Shoe; There is a shoe here on the floor.
+25 crowbar	 26   0   0	Crowbar; You can see a crowbar.
+26 axe		 41   0   0	Axe; There is a large axe here.
+27 pick		 41   0   0	Pick; There is a pick here.
+28 shovel 	 41   0   0	Shovel; Someone left a shovel here.
+29 cake		 24   0   0	Cake; There is an angel food cake here.
+30 ladder	 41   0   0	Laddder; There is a short ladder here.
+31 keys		  4   0   0	Keys; There are keys here.
+32 lamp		101   0   0	%off: Lamp; An ancient lamp lies on the ground. (lamp off)
+				%on: Shining lamp; An ancient lamp shines nearby. (lamp on) ~-3
+				%broken: Broken lamp; A broken lamp is discarded {here|nearby}. (break lamp)
+				%repaired: Mended lamp; An ancient lamp lies on the ground; once broken, now repaired. (repair lamp) ~3
+33 gold		 49 100   0	%shiny: Gold; There are bars of polished gold here! (shine gold)
+34 rope		 14   0   0	Rope; There is a rope here.
+35 wagon	224   0   0	Wagon; There is a wagon here in which you may carry some of your things.
+36 sword	149   0   0	Sword; There is a mighty sword here.
+37 charm 	221   0   0	Charm; There is a lucky charm here.
+38 dog		105   0   0	Dog; There is a dog barking nearby.
+39 pearl	146 100   0	Pearl; There is a wonderful pearl here!
+40 jewels 	226 100   0	Jewels; There are jewels here!
+41 control 	 44   0   0	Remote Control; There is a remote control device here.
+42 blessing	 98   0   0	Queen's blessing; The Queen's blessing is here for you to receive. She hopes you will use it to scare the dragon from her royal kingdom. 
+43 earring 	147 100   0	Earring; There is an earring here.
+44 paper	 40   0   0	Paper with the word BANANA written on it; The word on a piece of paper reads, "BANANA."	
+45 sticks	  2   0   0	%new: Wet sticks; There are wet sticks here. \You can wet or dry them, or you can light them. (no cmd)
+				%wet: Wet sticks; There are wet sticks here. (wet sticks)
+				%dry: Dry sticks; There are dry sticks here. (dry sticks) ~-4
+				%{lit|burning|blazing|afire}: Lit sticks that you had better drop quickly!; There are blazing sticks here. (burn sticks) ~3
+46 bird		  1   0   0	Singing bird; There is a happy bird singing nearby.
+47 cage		  2   0   0	%{vacant|empty|unoccupied}: Empty wicker cage; There is an empty wicker cage discarded nearby. (release bird) 
+				%{full|occupied{| by a bird{| inside}}}: Wicker cage with singing bird inside; There is a wicker cage here with a singing bird inside. (encage 46) 
+48 matches	  1   0   0	Matches; There are matches here.
+
+<OBSTACLES>
+ 1 Blockade	219	There is a great lock on a metal door blocking the way.
+ 2 Dirt 	217	The way is blocked by a cave-in of dirt.
+ 3 Wall		 82	A strong electric door bars the way.
+ 4 Door		 35	There is a button here on the wall. An automatic door is shut, preventing entry.
+ 5 Lock		 43	A combination lock secures the door.
+ 6 Cave-in	 48	Piles of rock and heavy, solid debris block the path.
+ 7 Pit		 83	A giant pit appears bottomless.
+ 8 Fire		215	A great, hot fire blazes.
+ 9 Catcher	105	A dog catcher guards a dog. You cannot have it unless you prove that you are worthy and are capable of taking good care of it. The dog barks from inside the cave.
+10 Keeper	 97	A keeper will not allow you in. "Bring me a diamond," he demands, "then I shall let you in." He speaks of the lost diamond, not seen for centuries, said to have been lost somewhere in the caves.
+11 Fence	228	An enormous fence prevents passage.
+12 Dragon	 87	A fierce dragon threatens your life.
+13 Vampire 	163	A frightening vampire guards a cave.
+14 Mummy	165	A strong mummy prevents your entry into a cave.
+15 Pigs		167	Gravy Sucking Pigs guard a cave.
+16 Barricade	169	A large door blocks the way.
+17 Guard	172	An old guard stands behind a locked door. "Amuse me!" he cries, "then I shall have you in."
+18 Secure	173	A strong door is tied shut by a rope.
+19 Grue		176	A short, ugly grue fiercely guards his cave.
+20 Witch	164	A wicked witch stands outside her cave. Although wicked, she appears easily frightened.
+
+<INPUT_SYNONYMS>	@required (-prohibited) location, req (-proh) object, req (-proh) obstacle
+  0   0   0	go	*		walk	*
+  0   0   0	north	.		go	north		go	n
+  0   0   0	south	.		go	south		go	s
+  0   0   0	east	.		go	east		go	e
+  0   0   0	west	.		go	west		go	w
+  0   0   0	inve	.		inven	.		invent	.
+  0   0   0	sleep 	., 		take 	nap, 		nap 	., 		take 	rest,	rest 	.	lie	down
+  0   0   0	get 	*, 		take 	*, 		grab 	*		pickup	*	fetch	*	collect	*	carry	*
+  0   0   0	get	all		get	everything
+  0   0   0	drop	*,		leave	*,		discard *
+  0   0   0	drop	all		drop	everything
+  0   0   0     drop	dog,		release	dog		unleash dog		abandon	dog
+  0   0   0	* 	bucket, 	* 	water
+  0   0   0	* 	cash, 		*	money, 		* 	$
+  0   0   0	* 	chicken, 	* 	rubber, 	* 	rubberchicken
+  0   0   0	* 	control, 	* 	remote, 	* 	device
+  0   0   0	* 	eggs, 		* 	egg
+  0   0   0	*	emeralds,	*	emerald
+  0   0   0	* 	football, 	* 	ball
+  0   0   0	* 	keys, 		* 	key
+  0   0   0	* 	lantern, 	* 	jack, 		* 	pumpkin,	*	jack-o-lantern,	*	jack-o'-lantern
+  0   0   0	* 	list, 		* 	numbers, 	read 	#, 		read 	#s, 	read 	#'s
+  0   0   0	*	matches		*	match
+  0   0   0	* 	numbers, 	* 	list
+  0   0   0	* 	pingpong, 	* 	ping, 		* 	pong
+  0   0   0	sleep 	., 		take 	nap, 		nap 	., 		take rest,	rest 	.
+  0   0   0	chop 	., 		use 	axe
+  0   0   0	drop	*,		leave	*
+  0   0   0	eat 	*, 		consume *, 		bite 	*, 		taste 	*
+  0   0   0	get 	*, 		take 	*, 		grab 	*
+  0   0   0	*	rug,		*	carpet
+  0   0   0	move 	rug, 		lift 	rug, 		roll 	rug, 		get 	rug
+  0   0   0	push 	*, 		press 	*
+  0   0   0	scare 	dragon, 	use 	blessing, 	show 	blessing
+  0   0   0	scare 	mummy, 		use 	candles, 	throw 	candles
+  0   0   0	scare 	vampire, 	use 	cros, 		show 	cross, 		hold 	cross
+  0   0   0	stab 	., 		use 	sword
+  0   0   0	stab 	*, 		slay 	*
+  0   0   0	stab 	*, 		kill 	*
+  0   0   0	throw 	bucket, 	use 	bucket
+  0   0   0	throw 	*, 		toss 	*
+  0   0   0	use 	keys, 		unlock 	*
+  0   0   0	*	lamp,		*	light
+  0   0   0	lamp	*,		light	on,		light	off
+  0   0   0	lamp	on		light	lamp	
+  0   0   0	get	991		get	furnace		get	bookshelf	get	shelf	get 	toilet			@991=fixture
+  0   0   0	get	993		get	room		get	hallway		get	hall	get	forest			@993=not something you can take
+  0   0   0	get	993		get 	maze		get	field		get	castle	get	office
+  0   0   0	get	993		get 	throne		get	pit		get	step	get	building
+  0   0   0	get	993		get 	passage		get	stream		get	pond	get	door
+  0   0   0	get	994		get	steps		get	passages	get	passageways
+  0   0   0	get	994		get 	halls, 		get 	hallways, 	get 	woods
+  0   0   0	get	995		get	fence											@995=immovable
+  0   0   0	get	997		get	pingpong	get	table 		get	desk	get	cabinet			@997=too heavy
+  0   0   0	get	997		get	box		get	coffin
+  0   0   0	get 	998		get	cabinets	get	boxes
+  0   0   0	shine	*		polish	*
+  0 -18   0	chase	dog		get	dog 
+  0  33   0	*	gold		*	bars
+  1   0   0	north	.		doorway	.
+  2  45   0	*	sticks		*	them
+  0   0   0	burn	sticks		light	sticks		ignite	sticks		blaze	sticks
+  0  48   0	blow	matches		extinguish fire		quench	matches		snuff	matches		snuff fire	extinguish matches	extinguish flame
+  0 -48   0	need	matches		burn	sticks		light 	match		light 	matches		blow matches	
+  0   0   0	*	cage		*	birdcage
+  0   0   0	*	bird		*	fowl
+  0 -46   0	grab	bird		*	bird
+  0  47   2	get	cage		get	bird		
+  0   0   0	encage	bird		cage	bird		use	cage		fill	cage	trap	bird	entrap	bird	snare	bird	ensnare	bird	pen	bird	imprison bird	detain	bird	incarcerate bird	confine	bird	lockup	bird	lock	bird	confine	bird
+  0  47   0	encage	bird		get	bird		capture	bird		catch	bird		collect	bird	find	bird	snatch bird	seize	bird	coax	bird	attract	bird	call	bird	make	birdcall sound	birdcall 	lure	bird	allure	bird	entice	bird	bait	bird	trick	bird	dupe	bird
+  0 -47   0	get	bird		get	bird		capture	bird		catch	bird		collect	bird	find	bird	snatch bird	seize	bird	coax	bird	attract	bird	call	bird	make	birdcall sound	birdcall 	lure	bird	allure	bird	entice	bird	bait	bird	trick	bird	dupe	bird
+  0  46   0	get	all?		get	all
+  0  47	  1	get	too_much_1	get	all?
+  0 -47   0	chase	bird		get	all?
+  0   0   0	get	all		get	all?
+  0  47   2	get	cage		get	bird		
+  0  45   0	scare	bird		get	bird		encage	bird
+  0  47   2	encage	bird		scare	bird
+  0 -47   0	chase	bird		get	bird
+  0   0   0	release	bird		drop 	bird		open	cage		uncage	bird	empty	cage	remove	bird	free	bird	unpen	bird
+  0 -46   0	grab	bird		*	bird
+
+  1   0   0	north	.		hall	.		hallway	.		passage	.	passageway .
+  2   0   0	south	.		empty	room
+ 16   0   0	* 	pingpong, 	* 	game, 		* 	ball
+ 20   0   0	tool 	room, 		tool 	., 		tools 	.
+ 24   0   0	eat 	cake, 		eat 	., 		eat 	it
+-24   0   0	waste 	cake, 		eat 	cake
+ 26   0   0	junk 	room, 		junk 	.
+ 31   0   0	push 	button, 	hit 	button, 	try 	button
+ 34   0   0 	dial 	*, 		set 	*, 		combination *, 		turn 	*, 		
+ 34   0   0 	dial 	666, 		666 	.
+ 37   0   0	* 	numbers, 	* 	list, 		* 	page, 		* 	#, 		* 	#s, 		* 	#'s
+ 37   0   0	type 	*, 		enter 	*, 		key 	*, 		push 	*
+ 37   0   0	type 	banana, 	banana 	.
+ 37   0   0   	log 	in, 		type 	login, 		login 	., 		type 	hello, 		hello 	.
+ 37   0   0	log 	out, 		type 	logout, 	logout 	., 		type 	bye, 		bye 	.
+ 44   0   0	set 	hands, 		move 	hands, 		adjust 	hands, 		set 	clock, 		move 	clock
+ 46   0   0	use 	control, 	push 	button
+ 47   0   0	use 	pick, 		dig 	.
+ 50   0   0	use 	shovel, 	shovel 	dirt, 		scoop 	dirt, 		dig 	., 		dig 	dirt
+ 58   0   0	west	.		empty	room
+ 78   0   0	north 	., 		maze 	.
+ 96   0   0	* 	guard, 		* 	keeper, 	* man
+ 96   0   0	bribe 	*, 		pay 	*
+ 96   0   0	give 	diamond, 	hand 	diamond, 	leave 	diamond, 	bribe 	guard, 		surrender diamond
+ 98   0   0 	get	blessing	receive	blessing
+105   0   0	show 	leash, 		use 	leash,  	wave 	leash, 		hold 	leash, 		give 	leash @
+108   0   0	throw 	rope, 		use 	rope		climb	rope		climb	fence		climb	.		climb	up
+110   0   0	throw 	rope,		use	rope		climb	rope		climb 	fence		climb	.		climb	up
+168   0   0	hit 	targeet, 	use 	football, 	throw 	football
+166   0   0	distract pigs, 		throw 	eggs, 		use 	eggs, 		show 	eggs, 		hold 	eggs
+160   0   0	use 	candles, 	show 	candles, 	hold 	candles, 	light 	candles, 	burn 	candles, 	wave 	candles
+161   0   0	scare 	witch, 		use 	lantern, 	show 	lanern, 	throw 	lantern
+173   0   0	cut 	rope, 		use 	sword, 		slash 	rope, 		tear 	rope, 		wave 	sword
+175   0   0	stab 	grue, 		use 	sword
+193   0   0	up 	., 		go 	up
+200   0   0	sleep 	., 		lie 	down, 		lay 	down
+209   0   0	open 	coffin, 	pry 	*, 		open 	., 		lift 	*, 		look 	inside, 	use 	crowbar, 	get 	in, 		get 	inside, 	look 	inside
+214   0   0	throw 	bucket, 	put 	out, 		extinguish ., 		extinguish 	fire
+216   0   0	use 	shovel, 	dig .
+
+
+<VERBS>
+@model verb
+@	100	You can't do that HERE! (You're not at the correct LOCATION.)
+@	15 0	You don't have the OBJECT you need to do that! @(Success places that object at position 0=PLAYER'S POSSESSION.)
+@	20 -1	You can't do that right now, because the relevant OBSTACLE isn't here or adjacent! @(Success sends that obstacle to -1=oblivion.)
+@        0 0	Yes! You're at the right place, holding the necessary object, and adjacent to the required obstacle! Your verb succeeds. (Bonus object #0 is transferred to location 0.)
+@	100 101 101 100 @Success results in the player being moved from loc 1 to 2 or from 2 to 1.
+cut rope
+	173	Cutting a rope here leads to no advantage.
+	36 0	You have no sword!
+	18 -1	There is no strong door secured by a rope in this vicinity. 
+	0 0	Using your sword, you cut the rope and enter the next room.
+	173 174 0 0
+destory control
+	0
+	41 -1 	You have no remote control device.
+	0
+	0 0	You have destroyed your remote control device.
+	0 0 0 0
+destroy dog
+	0
+	38 -1	There is no dog here.
+	0
+	0 0	You have killed your dog. You are a bad person.
+	0 0 0 0
+destroy lantern
+	0
+	12 -1	You have no lantern.
+	0
+	0 0	You have smashed your lantern.
+	0 0 0 0
+dial 666
+	43	What? A phone number? I don't catch your meaning.
+	0 
+	5 -1
+	0 0	You dial 666 on the combination lock and it opens, permitting you to enter.
+	34 43 43 34
+distract pigs
+	167	This is not the place to distract pigs.
+	14 -1	You have no eggs with which to distract them!
+	15 -1	The pigs are not here for you to distract.
+	0 0	You dance and prance, throwing eggs in all directions. The distracted pigs flee!
+	166 167 0 0
+eat cake
+	24	Unused Message @@ see 'waste cake'
+	29 -1	You have no cake to eat.
+	0
+	0 0	You have eaten the angel food cake. You rise from the ground in your weightlessness and you are lifted into th attic! The cake wears off, and you find yourself in floating up into the dome area.\
+	24 204 0 0
+give diamond
+	97	No one here wants your diamonds.
+	2 68	You don't have a diamond.
+	10 -1	The Keeper is needed to complete this transaction.
+	0 0	You give the diamond to the guard and he permits you in!
+	96 97 0 0
+hit target
+	169	I see no target to hit.
+	20 -1	You have no football.
+	16 -1	There is no barricaded door nearby to overcome in this way.
+	0 0	You throw the football. As it hits the target bull's eye, the door beside you opens!
+	168 169 0 0
+move rug
+	15	There is no rug here to move.
+	0 
+	0 
+	0 0	You have moved the rug, revealing a door leading to the cellar.
+	15 193 0 0
+open coffin
+	209	Open coffin? Not here!  @unused message
+	0
+	0
+	0 0	You have opened the coffin...
+	209 210 0 0
+push button
+	35	I enjoy pushing buttons, but I don't see any here.
+	0 
+	4 -1	Door obstacle needed.
+	0 0	You have pressed the button, and the door to the computer room is now open!
+	31 35 35 31
+scare dragon
+	86	You must find him first!
+	42 0	You don't have anything with which to scare it.
+	12 88	The dragon is not here!
+	0 0	With the Queen's Blessing, you scare the dragon! It backs off to the east, permitting you to proceed farther.
+	0 0 0 0
+scare mummy
+	165	There is no mummy here.
+	16 0	You have nothing with which to scare him.
+	14 -1	There is no mummy in the vicinity.
+	0 0	Holding your burning candles to the mummy, the frightened monster runs away!
+	160 165 0 0
+scare vampire
+	163	I see no vampire at this location.
+	11 0	You cannot scare the vampire with anything that you are carrying.
+	13 -1	First, find the vampire!
+	0 0	The vampire flees at the sight of your silver cross!
+	162 163 0 0
+scare witch
+	164	That won't work here!
+	12 0	With what? You haven't found anything that you can use to scare the witch!
+	20 -1	There is no witch here to scare!
+	0 0	You have frightened the witch with your jack o'lantern and she has run off, permitting  you to enter her cave.
+	161 164 0 0
+set hands
+	44	There is no clock here whose hands you can set.
+	0
+	0
+	0 0	As you set the hands of the clock to 12:00, the bookcase moves to reveal the entrance to a cave.
+	44 45 53 45
+show leash
+	105	No one here cares to see your leash.
+	18 0	"Go find a leash," he says. "Then I will let you have the dog."
+	9 -1 	There is no need to further satisfy the dog catcher.
+	0 0	Satisfied that you are capable, the dog catcher stands aside!
+	92 105 0 0
+stab dragon
+	87	Not here.
+	36 0	You have no sword with which to kill the beast.
+	12 -1	Let's find the dragon first!
+	0 0	You have used your sword to kill the fierce dragon! You have passed by it and entered Enchanted Forest!
+	87 150 0 0
+stab grue
+	176	This is not the place to attempt to stab the grue!
+	36 0	You have nothing with which to stab him.
+	19 -1	There is no grue here.
+	0 0	With a slash of your sword, you have viciously killed the ugly grue.
+	175 176 0 0
+throw bucket
+	215	If you don't want it, just say 'DROP BUCKET'; don't be violent about it.
+	21 -1	You have no bucket of water.
+	8 -1	But, there's no fire!
+	0 0	Using your bucket, you throw water on the fire... The fire is extinguished!
+	214 215 215 214
+throw rope
+	228	Tossing a rope here is of no use. @Employ adj to 228 at 108 and/or 110
+	34 0	You have no rope.
+	11 0	Without a fence nearby, this action is of no use.
+	0 0	Using your rope, you have climbed the fence.
+	108 110 110 108
+up .
+	193	There is no way to go up.
+	0
+	0
+	0 0	You are now in Hobby Room!
+	193 15 194 15
+use control
+	82	Nothing happens.
+	41 0	You have no remote control device.
+	3 -1	Where's the great door?
+	0 0	Using your remote control, the great door slides open!
+	46 82 82 46
+use pick
+	48	There is no use for a pick here.
+	27 0	You don't have a pick.
+	6 -1	Where's the pile of dirt and rocks?
+	0 0	Using your pick, you break through the blockade of rocks and debris!
+	47 48 48 47
+use shovel
+	217	There is no use for a shovel here.
+	28 0	You don't have a shovel.
+	2 -1	Where's the pile of dirt?
+	0 0	Using your tool, you shovel through the pile of dirt!
+	216 217 217 216
+use keys
+	219	There is nothing here that you can unlock.
+	31 0	You need keys!
+	1 -1	Where's the door to unlock?
+	0 0	Using your keys, you have unlocked the door!
+	218 219 219 218
+waste cake
+	0
+	29 -1	You don't have any cake.
+	0
+	0 0	The cake was delicious. You fly into the air uncontrollably; after a ew moments, you fall back to the ground. I'm afraid you've wasted a lift you'll need elsewhere.
+	24 204 0 0
+wave chicken
+	172	Nothing happens.
+	13 -1	You don't have a rubber chicken.
+	0 -1
+	0 0	Waving the rubber chicken, you amuse the guard, who runs off with it.
+	171 172 0 0
+wave rod
+	83	Nothing happens here.
+	1 0	You have no rod.
+	7 83	Nothing happens away from the pit.
+	0 0	With a wave of your rod, a tight rope spans the pit, allowing you to cross!
+	82 84 84 82
+wave wand
+	0
+	19 0	You have no wand.
+	0
+	0 0	You wave your wand...
+	95 86 0 95
+
+
+<RESPONSES>
+@ 1   2   3 	test *		You've tested well!   @req_loc =1; req_obj=2; req_state=3 (rejection messages are automatic for unmet conditions.)
+@				Negative numbers mean prohibited location or prohibited object or prohibited state.
+  0   0   0	get 991		You should consider that {|to be }a fixture. @singular
+  0   0   0	get 992		You should consider those {|to be }fixtures. @plural
+  0   0   0	get 993		That is not {something you can take|able to be taken}.    @singular
+  0   0   0	get 994		Those are not {something you can take|able to be taken}.  @plural
+  0   0   0	get 995		{That|It} is {immovable|not able to be moved}. @singular
+  0   0   0	get 996		{Those|They} are {immovable|not able to be moved}. @plural
+  0   0   0	get 997		That is too heavy{| to carry| to be carried| to pick up| to be picked up}. @singular
+  0   0   0	get 998		Those are too heavy{| to carry| to be carried| to pick up| to be picked up}. @plural
+  0   0   0	break door	{You can't. |Impossible. |||}{It|The door} {cannot be broken.|doesn't break.|appears unbreakable.}
+  0   0   0	break lock	{You can't. |Impossible. |||}{It|The lock} {cannot be broken.|doesn't break.|appears unbreakable.}
+  0   0   0 	chop *		Nothing to chop here.
+  0   0   0	scare bird	The bird is afraid of the sticks.
+  0   0   0	chase bird	Without {a|the} cage, you can't carry the bird!
+  0   0   0	chase dog	Without a leash, you can't keep ahold of the dog!
+  0   0   0	explore .	Let's explore! Type N, S, E, or W to proceed in that direction.
+  0   0   0	scare bird	The bird is afraid of the sticks!
+  0   0   0 	kick *		Kicking here is of no avail.
+  0   0   0	sleep .		You are now refreshed after a short nap.
+  0  22   0	read numbers	It is just a list of numbers: 35, 42, 78, etc. They are meaningless to you, but may mean something to the computer.
+@  0 -45   0	findXXX bird	There's no bird here.
+  0  45   4	get all		Be specific about what you want to get. I know you don't want to get the sticks, because they're on fire!
+  0  45   4     get sticks	The sticks are on fire! You can't {get them|pick them up|touch them|grab them} now!
+  0  47   0	get too_much_1	You'll have to capture the bird first!
+  0 -47   0	use cage	You don't have a cage!
+  0 -48   0	need matches	You have no matches!
+  0  48   0	light matches	You strike a match and it lights!
+  0  48   0 	blow matches	The match is extinguished!
+ 16   0   0	play pingpong	There is no one here with whom to play. Besides, there are no paddles in view.
+ 24   0   0	* ladder	The Dome Entrance is too high for your ladder to reach.
+ 30   0   0 	* cabinet	The filing cabinet is of no use to you.
+ 34   0   0	dial *		You don't know the combination.
+ 36   0   0 	get computer	The mainframe is much too large to carry!
+ 37   0   0	log in		You must now type the password.
+ 37   0   0	type banana	You are now logged in!
+ 37   0   0	type numbers	You enter the list of numbers; the computer prints out "Combination = 666."
+ 37   0   0	type qu/l	No jobs are waiting to be spooled.
+ 37   0   0	type sy/-	There are no other users on the system.
+ 37   0   0	type systat	There are no other jobs on the system.
+ 37   0   0	type *		The computer does not respond.
+ 37   0   0 	get terminal	The terminal is to heavy to carry; consider it a fixture.
+ 37   0   0 	log out		You have successfully logged out of the system.	
+ 40   0   0 	get desk	You can't be serious!
+ 44   0   0 	get clock	The clock is a fixture.
+ 82   0   0	jump *		The pit is much too wide to jump!
+136   0   0	swim .		You are relaxed after a refreshing swim in the pond.	@the period for the second word means blank
+
+
+<HINTS>
+  1  0 hint . 		You should go north and explore. Maybe draw a map as you go!
+
+
+<OUTPUT_SYNONYMS>
+
+
+<LOCATIONS>
+  1     2   0   0   0	You {find yourself|are|are standing} {in|inside|within} {a|an empty|a vacant} room with {an exit|a doorway|a way out|a{n e/w|n east/west|} {hall|passage}{way}}{ to the| to the|} north.
+  2     0   1   3 227	You are in a hall{way|} running east/west. There is an empty room to the south.
+  3     0   8   4   2	You are in {a|an east/west} hallway{ with a branch southward|}; you may go west, east, or south.
+  4     0   7   5   3	You are in an east/west passage{way|} with a branch{ to the|} south.
+  5     0   6   0   4	You are in a corner; you may go west or south.
+  6     5   0	0   7	You are in a corner; you may go north or west.
+  7     4   9   6   8	You are in Marble Hall. Passages go in all four directions.
+  8     3   0 	7   0	You are in a corner; you may proceed north or east.
+  9     7   0  10  18	You are in an east/west hallway with a branch to the north.
+ 10     0  12   0   9	You are in a vast hallway. You may go west or south.
+ 11     0   0  89  12	You are in a hallway. To the east is an exit and to the west the hall leads on.
+ 12    10   0  11  13	You are in a hallway. There is a light to the east. A long hall continues west. A passage branches to the north.
+ 13    14   0  12  23	You are in an east/west hall{way} outside a hobby room to the north.
+ 14    17  13  15  16	You are inside a hobby room. There is a rug to the east and a ping pong table to the west.
+ 15     0   0   0  14	You are standing beside an oriental rug at the east end of a hobby room.
+ 16    17   0  14   0	You are standing beside a green ping pong table. There is an exit to the north and one to the east.
+ 17    18  16  14   0	You are in a hobby room with north and south exits.
+ 18     0  17   9  19	You are in a hallway just north of a hobby room.
+ 19   227   0  18  20	You are in an empty room with passages leading all directions except south.
+ 20     0  41  19  21	You are standing in a hallway with a tool room just south.
+ 21    25  22  20   0	You are at the west end of a long east/west hallway intersecting a north/south passage.
+ 22    21   0  23   0	You are in the corner of two halls. You may proceed north or east.
+ 23    24   0  13  22	You are in an east/west hall{way|} {south of a kitchen|with a kitchen north}.
+ 24     0  23   0   0	You are in a messy kitchen. You look up to see an entrance to a large dome area. You cannot reach to pull yourself into the entrance.
+ 25    27  21  26   0	{You are in a north/south passage. |}There is a junk room to the east.
+ 26     0   0   0  25	You are in the junk room.
+ 27     0  25  28   0	{Corner; go east or south.|You are in a corner; you may go east or south.}
+ 28    32 227  29  27	You are at a junction with halls leading in all directions.
+ 29    34   0  30  28	You are near an exit, to the east, and a library, north. To the west, a hall leads on.
+ 30     0   0 139  29	There is an exit to the east and a hall to the west.
+ 31    35   0  32   0	The programmers' room is just north. A hallway leads east.
+ 32     0  28  33  31	You are in an east/west passage with a branch south.
+ 33    42   0  34  32	There is an office north. A hall leads east/west.
+ 34    43  29   0  33	You are at a corner; halls lead west and south. A library is to the north.
+ 35    37  31	0  36	You are inside the programmers' room. There is a computer to the west, a terminal to the north.
+ 36    37  35  37   0	You are standing beside a large computer.
+ 37     0  35	0  36	You are at a terminal connected to the computer.
+ 38     0   0  39   0	You are in a secretarial room. There are filing cabinets here and an office to the east.
+ 39    40  42  40  38	You are in an office with a secretarial room to the west.
+ 40     0  42   0  39	You are near a desk in the office. @The word on a piece of paper reads, "BANANA."
+ 41    20   0   0   0	You are in a small tool room.
+ 42    40  33   0  39	There is a desk north, a door west, and an exit south.
+ 43    44  34   0   0	You are at the south end of a library.
+ 44     0  43   0   0	You are in a library with a southern exit. There is a large clock here standing next to a suspicious bookcase. The glass door covering the hands of the clock is open.
+ 45     0   0  46  44	You are in a tunnel east and west. Eastward it is dark and to the west is the back of what seems to be a bookcase.
+ 46     0  47  82  45	Hall west, door east, hall south.
+ 47    46  52   0  48	You are in a north/south hall outside a door to the west into the Gold Room.
+ 48     0  49  47   0	You are in the Gold Room. A hall leads south.
+ 49    48  50   0   0	You are at the south end of the Gold Room with a hall leading south.
+ 50    49  51 217   0	Proceed north, south, or east.
+ 51   219   0 220  50	You may go west toward the Gold Room, north toward a door, or east into passages.
+ 52    47  53  54   0	You may go north, east, or south into a dead end.
+ 53    52   0   0   0	You are in a dead end. you must go north to get out.
+ 54     0 214  55  52	Go east, west, or south.
+ 55     0  58  56  54	Continue east, west, or south.
+ 56     0  61  57  55	You are in an east/west cave with a tunnel leading south.
+ 57     0   0	0  56	You are in a dead end with an exit to the west.
+ 58    55 225   0  59	You are in a north/south hallway with an empty room to the west.
+ 59     0   0  58   0	You are in an empty room. It is dark and you see only one exit to the east.
+ 60     0   0   0   0	You will never get this message unless there is a bug in the program or map. @unused loc (60)
+ 61    56  62   0  62	You are in a {terrible |terrifying |terrific |}maze of winding passage{way|}s {and caves |}with {{an exit|a way {out|of escape}|an escape} {to the |}north|a northern exit}.
+ 62    61  63  64  61	You are in a mysterious maze of {twisting|winding} passageways.
+ 63    62   0  64  67	You are in a winding passageway in a {large |}maze.
+ 64    62   0  65  63	You are {lost |}in a {strange |}maze of winding passage{way|}s.
+ 65    81   0  66  64	You are in a maze. You may go east, west, or north.
+ 66    65  73   0  72	You may go north, south, or west, further into this maze.
+ 67    63  68  71   0	You are in a maze.
+ 68    67   0   0   0	You are in a winding maze.
+ 69    71  70  71  68	You are in a maze of passages.
+ 70    71   0  72  69	You are in a winding passage.
+ 71    67  69  70  69	You are in a maze of winding pasageways.
+ 72    66   0  73  70 	You are deep in a maze of passages.
+ 73     0  72  74  66	You are in a{n endless | }maze{| of {twisting{|, winding} passage{s|ways}}}.
+ 74     0  79  75  63	You are in a winding maze of twisting passages.
+ 75    80  79   0  74	You are in a maze.
+ 76     0   0  77   0	You are in a dead end.
+ 77     0 146  78  76	You are in an east/west passage... Dead end to the west, maze to the east, and passage to the south.
+ 78    79   0   0  77	You are near a maze of passages. It is to the north.
+ 79    75  78   0  74	You are in a deadly maze of winding passages.
+ 80     0  75  81  81	You are in a hopeless maze of passages.
+ 81     0  80  80  65	You are trapped in a confusing array of winding passages.
+ 82     0   0  83  46	You are on the west side of a tremendous pit.
+ 83     0   0  84  82	You are crossing a great pit.
+ 84     0   0  85  83	You are on the east side of a vast pit.
+ 85     0   0  86  84	You are at the bottom of an old staircase of wooden steps. To the east is the top of the case, light shining in. To the west, a hall leads on.
+ 86     0   0  87  85	You are at the east end of a staircase leading into the ground. There is a field to the east.
+ 87     0   0  88  86	You are in a large field stretching eastward.
+ 88     0 150 150  87	You are in a large field stretching east.
+ 89    99   0  90  11	You are outside a building (west) near a forest (north) and a road stretching east into the distance.
+ 90   100   0  91  89	You are on an east/west roadway. There is a wooded area to the north.
+ 91   103   0  92  90	You are on a long road extending east and west. A forest is just north.
+ 92   105   0  93  91	You are near a cave to the north. A road extends east/west.
+ 93   106   0  94  92	You are on a roadway. You can see a castle to the east, a forest to the north.
+ 94   107   0  95  93	You are at the east end of a road extending westward. To the east is a field and beyond that is a castle.
+ 95   109   0  96  94	You are in a large field: Forest north, road west, castle east.
+ 96   109   0  97  95	You are just outside a castle to the east.
+ 97     0   0  98  96	You are now inside the castle. The queen is on her throne just east of here.
+ 98     0   0   0  97	You are in the presence of the Queen. She is sitting majectically and wondering royally why you have come.
+ 99   137  89 100 136	You are in a forest. There is a pond to the north, road to the south.
+100   100  89 101  99	You are deep in a forest.
+101   101  90 102 100	You are {||walking |exploring }in a forest {|just }north of a road.
+102   102  91 103 101	You are in the forest.
+103   103  91 104 102	You are in the forest, north of a road and west of a cave.
+104   104  92 105 103	You are in a forest with a road to the south and a cave to the east.
+105      0 92   0   0	You are inside a cave with only a southern exit.
+106   108  93 107 104	You are in a forest north of a road and west of a cave.
+107   108  94 109 106	You are in a forest.
+108   228 107 109 106	You are on the south side of a fence.
+109   108  95   0 107	You are near a castle (south), a fence (north), and a road (east).
+110   111 228 113 111	You are on the north side of a fence. There is a cave to the west.
+111   112 110   0 112	You are in a cave leading west.
+112    77 146   0   0	You have passed through a one-way door into a north/south passsage.
+113   116 110 114 110	You are in a strange forest north of a castle and east of a cave entrance.
+114   119 113 114 113	You are north of a castle in a forest.
+115   120 113 116 115	You are in a strange forest.
+116   121 113 117 115	You are lost in a green forest.
+117   117 113 118 116	You are in a great forest of trees and brush.
+118   122 118 119 117	You are in a wooded area. You can seee a castle to the south.
+119   123 114 119 118	You are in a forest.
+120   120 115 121 120	You are in a forest.
+121   124 116 122 120	You are in a large forest.
+122   125 118 123 121	You are in a forest.
+123   126 119 123 122 	You are in a vast forest.
+124   124 120 125 124	You are in a large forest area.
+125   127 122 126 124	You are in a forest area.
+126   128 122 126 125	You are in a forest of pines and needles.
+127   129 124 128 127	You are in a great forest.
+128   129 126 128 127	You are in a great wooded area.
+129   130 128 129 127	You are in the northern part of a forest.
+130   130 129 132 131	You are in a forest.
+131   135 127 130 134	You are in the NW part of a forest.
+132   132 128 133 130	You are in a forest of trees and b
+133   133 123 133 132	You are in a large forest.
+134   134 120 131 134	You are in a forest.
+135   150 131 135 135	You are in a forest.
+136   138  99 137 136	You can see a pond to the east and a stream to the north.
+137   138 136 100 136	You are in a shallow pond. There is a stream to the north.
+138   140 136 100 143	You are in a small stream just north of a small pond.
+139   141 143 140  30	You are near an entrance to a building. A small stream is just east.
+140   141 138 140 139	You are {at|by|near|in the vicinity of} a stream running north and south.
+141   142 140 141 142	You are at a stream.
+142     0 141 141   0	There is a small pipe coming out from the wall of a building here. The water from the pipe forms a stream to the east.
+143   143 143 140 144	You are in a wooded area: stream east; entrance to the building north.
+144   144 144 143 145	You are in the woods.
+145   145 145 144 145	You are deep in the woods.
+146    77   0   0 148	You are in a corner; you may proceed north or west.
+147     0 148   0   0	You are at a dead end passage. {The exit is {|to the }south.|}
+148   147   0 146 222	You are in an east/west passage with a branch north.
+149     0 223   0   0	You are in a large room with an exit to the south.
+150   150 175 154 153	**YOU ARE IN THE ENCHANTED FOREST**
+151   151 151 152 151	You are in Enchanted Forest.
+152   162 152 153 151	You are in Enchanted Forest. There are caves to the west.
+153   162 175 150 150	You are in Enchanted Forest near caves and a grue area (south).
+154   161 175 155 154	You are in the eastern part of Enchanted Forest. There are caves to the north and south.
+155   155 166 156 155	Enchanted Forest. The Land of Gravy Sucking Pigs is just south.
+156   160 166 157 156	You are south of Mummy's Tomb and north of the Land of Gravy Sucking Pigs.
+157   157 166 158 157	You are in Enchanted Forest. There are caves to the west.
+158   159 158 158 160	You are in Enchanted Forest. 
+159   159 158 159 161	You are in Enchanted Forest. 
+160   165 156 159 162	You are at Mummy's Tomb.
+161   164 154 160 152	You are in the Witch's Forest. A great cave is just north.
+162   163 152 161   0	You are in Bloody Woods. Vampire Cave is to the north.
+163     0 162   0   0	You are in Vampire Cave. The only exit is south.
+164     0 161   0   0	You are in Witch's World.
+165     0 160   0 155	You are in the Ruby Room.
+166   155 167 157   0	You are in the land of Gravy Sucking Pigs. There is a fabulous tunnel to the east.
+167   156 168   0   0	You are at the entrance to a tunnel leading south.
+168   167   0   0 169	You are outside a door. There is a target here, but it is beyond your reach.
+169     0   0 168 170	You are inside a door. A hallway is to the east.
+170   171   0 169   0	You are in Green Room.
+171   172 170   0   0	You are in a {north/south |}hallway.
+172     0 171   0 173	You are in Guard's Room.
+173     0   0 172 174	You are in Guard's Room just east of Silver Room.
+174     0   0 173   0	You are in Silver Room. The only exit is east into Guard's Room.
+175   150 176 166 153	You are in Haunted Land of Grues. A Cave entrance is south.
+176   175 177   0 188	You are in a cave. You may go south or west into th cave, or north into the forest.
+177   176   0   0 178	You are in Grue's Cave. You may go north or west.
+178   181   0 177 179	You are in an east/west passage with a branch north.
+179   189   0 178 180	You are in an east/west passageway with a northern branch.
+180     0   0 179   0	You are in Grue's Dead End.
+181   182 178   0 186	You are in Grue's Foolish Maze.
+182   183 181   0 185	You are in Grue's Maze. {|Proceed north, south, or west.}
+183     0 182   0   0	You are in a winding maze in Grue Cave.
+184     0   0 185   0	You are in a dead end. {Exit east.||}
+185     0 186 182 184	You are in Grue's Maze.
+186   185   0 181 187	You are in Grue's Crazy Maze.
+187     0   0 186   0	Dead End. {Exit east.||}
+188     0 189 176   0	You are in Grue's cave. You may go east or south.
+189   188 179   0 190	You are near Grue's Bedroom.
+190     0 191 189   0	You are in Grue's Bedroom.
+191   190 192   0   0	You are in Grue's Bathroom. There is a woman in the shower, but the shower door is locked and there is no way in. "Is that you, Grue?" you hear her call. She peeks over the door and gives you a sexy smile. She throws you a kiss and continues her shower.
+192   191   0   0   0	You are in Grue's Toilet.
+193   203 194 196  15	You are in Cellar. There is a blazing furnace, a water heater, a bed, and on the other side of the room you see a closet.
+194   193   0 195   0	You are in Cellar.
+195   201   0 196 195	You are at the south side of Cellar.
+196   199   0 197 195	You are outside a closet to the east.
+197   198   0   0 196	You are at the south end of a large closet with an exit to the west.
+198     0 197   0 199	You are at the north end of a large closet with an exit to the west.
+199     0 196 198 200	You are at the north side of Cellar. There is a closet to the east.
+200     0 195 199 201	You are near a bed.
+201     0 195 200 202	You are in Cellar.
+202     0 193 201 203	You are in Cellar near a water heater.
+203     0 193 202 193	You are in Cellar near a blazing furnace.
+204   205 213 205  24	You are in Attic. To the south are weak boards; it is not advisable to proceed in that direction! The Attic is filled with boxes of all sorts. To the west is the way back to the kitchen.
+205     0 212 206 204	Box of Christmas stuff.
+206     0 212 207 205	Box of Halloween stuff.
+207     0 211 208 206	Box of Thanksgiving stuff. Side of box reads, "RUBBER CHICKEN."
+208   207 209   0 204	Box of Easter stuff.
+209   208   0   0 211	There is a coffin here.
+210   209   0   0 211	You are lying in a coffin.
+211   209   0 209 212	Box of birthday stuff.
+212   206   0 211 213	Box of New Year's stuff. There are weak boards to the west, but you can go around the weak spot.
+213     0  23   0   0	You have fallen through and down into the kitchen!
+214    54 215   0   0	You are in a north/south passage.
+215   214 218   0 216	You are in a north/south passage with a branch west.
+216     0   0 215 217	You are in an east/west passage.
+217     0   0 216  50	You are in an e/w passage.
+218   215 219   0   0	N/S passage.
+219   218  51   0   0	You are in a n/s passageway.
+220   221   0 222  51	E/W passage with north branch.
+221     0 220   0   0	Dead End. {Exit south.||}
+222   223   0 148 220	Proceed north, west, or east.
+223   149 222   0   0	South of weapon room.
+224     0   0 225   0	Utility Room.
+225    58   0 226 224	Hall north, Utility Room west, hall east.
+226     0   0   0 225	You are in the Treasure Room.
+227    28  19   2   0	N/S passage, branch east.
+228   110 108   0   0	Fence location. @dummy location
+
+
+
+<END>
