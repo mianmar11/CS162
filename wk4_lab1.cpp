@@ -1,3 +1,13 @@
+/*
+Zaw Ye Yaint Naing 
+
+CS162 Spring - Mitch Priestley 
+
+Purpose: Implement and demostrate a Point struct (data type), including 
+adding Points and multiplying a Point by a scalar: memeber functions to 
+refkect a Point, output a Point, and operator overloading to << a Point. 
+*/
+
 #include <iostream>
 #include <iomanip>
 
