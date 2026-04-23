@@ -1,9 +1,11 @@
 /*
 
-Credits: StackOverflow, cppreference.com, W3School, IBM, Microsoft Learn, Medium, BroCode(YT)
+Credits: StackOverflow, cppreference.com, W3School, IBM, Microsoft Learn,
+Medium, BroCode(YT)
 */
 
 #include <iostream>
+#include <iomanip>
 #include <cstring>
 #include <string>
 #include <chrono> // for chrono_literals
@@ -13,6 +15,7 @@ Credits: StackOverflow, cppreference.com, W3School, IBM, Microsoft Learn, Medium
 using namespace std;
 using namespace chrono_literals;
 using namespace this_thread;
+using namespace chrono;
 
 // Global Consts
 unordered_map<string, string> COLORS {
@@ -24,18 +27,43 @@ unordered_map<string, string> COLORS {
     {"reset",   "\033[0m"}
 };
 
-unordered_map<string, chrono::milliseconds> durations {
+unordered_map<string, milliseconds> durations {
     {"150", 150ms},
     {"40", 40ms},
-    {"35", 35ms}
+    {"35", 35ms},
+    {"10", 10ms}
 };
 
 // Func Prototypes
 void RenderText(const char[], 
-    chrono::milliseconds duration = 40ms);                  // Display text at a pace just like in actual games
+    milliseconds duration = 40ms);                  // Display text at a pace just like in actual games
 void HideOutput(int);                                       // Hide the previous output by n number 
-string Continue();                                          // Get User Input and Check with sample 
+string WaitUser();                                          // Get User Input and Check with sample 
 string ColorText(string, string);                                    // Colors the text
+
+
+// Structs
+struct Dialogue {
+    string entity;                      // Narrator such as "[NPC]" in color
+    string msg;                         // Dialogue of a entity or place
+    milliseconds pace = 40ms;           // Render speed 40 milliseconds
+    bool display_entity = false;         // display entity name or not
+    bool is_interactive = false;        // user interaction
+    int wait = 0;                       // seconds to wait before passing to another dialogue
+
+    void display() {
+        entity += " ";
+
+        if (display_entity)             // Display entity name
+            cout << ColorText(entity, "yellow");
+        else 
+            cout << left << setw(entity.length()) << " ";
+
+        RenderText(msg.c_str(), pace);  // Render Dialogue
+        sleep_for(milliseconds(wait));
+        if (is_interactive) WaitUser(); // wait for player interaction
+    }
+};
 
 int main() {
     // Init Variable
@@ -44,38 +72,45 @@ int main() {
     int current_loc {};             // Current location that player is in
 
     // Welcome User
-    // HideOutput(15);
+    HideOutput(15);
 
-    // RenderText("Hello Stranger..\n");
-    // RenderText("Your name...?: \033[33m");
-    // getline(cin, username);
-    // cout << "\033[0m";
-    // username = ColorText(username, "green");      // Add color to player name
-    // HideOutput(15);
+    RenderText("Hello Stranger..\n");
+    RenderText("Your name...?: \033[32m");
+    getline(cin, username);
+    cout << "\033[0m";
+    username = ColorText(username, "green");      // Add color to player name
+    HideOutput(15);
 
-    // RenderText("Hello, ");
-    // RenderText(username.c_str());       // (Change the string to c string)
-    // RenderText("\nWelcome to \033[36m.{Silver Grit}.\033[0m\n");
+    RenderText("Hello, ");
+    RenderText(username.c_str());       // (Change the string to c string)
+    RenderText("\nWelcome to \033[36m.{Silver Grit}.\033[0m\n");
     
-    // Continue();
-
+    WaitUser();
 
     // Epilogue
-    string dialogues[][4] {
-        {"Hello stranger, you are..\n", "40", "enter"},
-        {"WAIT.... \n", "150", "continue"},
-        {"Aren't you one of those heros that fought Mighty Evil???\n", "35", "enter"},
-        {"You are getting nowhere with those wounds.\n", "40", "enter"},
-        {"There is a village nearby. You should visit it.\n", "40", "enter"},
-        {"Here ", "50", "continue"},
-        {"take this. ", "50", "continue"},
-        {"It will guide you.\n", "40", "enter"}
+    Dialogue dialogues[][4] {
+        {"[NPC]",   "Hello stranger,", 40ms, true},
+        {"",        "you are..\n", 80ms, false, true},
+
+        {"[NPC]",   "WAIT....", 80ms, true},
+        {"",        "Aren't you one of those heros that fought", 10ms, false},
+        {"",        ColorText("Mighty Evil???\n", "red"), 150ms, false, true},
+
+        {"[NPC]",   "Ahhh...\n", 80ms, true, false, 100},
+        {"[NPC]",   "My instincts are still correct.\n", 40ms, false, false, 100},
+        {"[NPC]",   "But you are not getting anywhere with those " + ColorText("wounds.\n", "red"), 40ms},
+        {"[NPC]",   "There is a " + ColorText("village", "cyan") + " nearby. You should visit it.\n", 40ms, false, true},
+
+        {"[NPC]",   "Here,", 50ms, true, false, 300},
+        {"",        "take this.", 30ms, false, false, 300},
+        {"",        "It will guide you.\n", 40ms, false, true},
+
+        {"",        "You have acquired the " + ColorText("Map", "yellow") + ".\n", 150ms, false, true}
     };
 
-    for (int idx=0; idx<8; idx++) {
-        if (dialogues[idx][2] == "continue") cout << ColorText("[NPC] ", "yellow");
-        RenderText(dialogues[idx][0].c_str(), durations[dialogues[idx][1]]);
-        if (dialogues[idx][2] == "enter") Continue();
+    // Display Dialogues
+    for (int idx=0; idx<13; idx++) {
+        dialogues[idx]->display();
     }
 
     return 0;
@@ -86,7 +121,7 @@ int main() {
 // Specification: It loops through the character array until it reaches to the end or null character
 // and print out each character then sleep for 20 milliseconds, then loop again.
 // Arguments: Required char array and ending option to end the display with endl or not
-void RenderText(const char msg[], chrono::milliseconds duration) {
+void RenderText(const char msg[], milliseconds duration) {
     for (int idx=0; msg[idx] != '\0'; idx++) {
         cout << msg[idx] << flush;
         sleep_for(duration);
@@ -114,7 +149,7 @@ bool CheckInput(T sample, T target) {
 // Purpose: To get any input from user
 // Specification: Requests an input from user and returns it
 // Arguments: not required
-string Continue() {
+string WaitUser() {
     cout << "[ENTER To Continue]";
 
     string user_input; // partial init
