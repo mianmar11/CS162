@@ -1,10 +1,23 @@
 /*
+Zaw Ye Yaint Naing
+
+CS162 Winter - Mitch Priestley
+
+Purpose: The purpose of this homework is to build a functioning game that 
+evokes player's feelings just like they are actaully playing an interactive 
+game rather than in command-line game. The main purpose is to introduce 
+game feels to the player even in the command line. 
+
+Specification: It involve managing different dialogues, travel advancements
+in linear progress, color texts and speed of text rendering. These will 
+make the player feel like the game is interacting with them and not just 
 
 Credits: StackOverflow, cppreference.com, W3School, IBM, Microsoft Learn,
 Medium, BroCode(YT)
 */
 
 #include <iostream>
+#include <iterator> // for getting size of array 
 #include <iomanip>
 #include <cstring>
 #include <string>
@@ -26,7 +39,8 @@ unordered_map<string, string> COLORS {
     {"yellow",  "\033[33m"},
     {"red",     "\033[31m"},
     {"green",   "\033[32m"},
-    {"white",   "\033[97m"},
+    {"grey",    "\033[90m"},
+    {"bold",    "\033[1m"},
     {"reset",   "\033[0m"}
 };
 
@@ -39,10 +53,11 @@ unordered_map<string, milliseconds> DURATIONS {
 
 // Func Prototypes
 void RenderText(const char[], 
-    milliseconds duration = 40ms);                  // Display text at a pace just like in actual games
-void HideOutput(int);                                       // Hide the previous output by n number 
-string WaitUser();                                          // Get User Input and Check with sample 
-string ColorText(string, string);                                    // Colors the text
+    milliseconds duration = 40ms);      // Display text at a pace just like in actual games
+void HideOutput(int);                   // Hide the previous output by n number 
+string WaitUser();                      // Get User Input and Check with sample 
+string ColorText(string, string);       // Colors the text
+int GetInput(int, int);                 // Get int user input
 
 
 // Structs
@@ -68,11 +83,14 @@ struct Dialogue {
     }
 };
 
+
 int main() {
     // Init Variable
     string username;                // Player name
-    string locations;               // Locations of the game
-    int current_loc {};             // Current location that player is in
+    string locations[] {"Main", "Village", "Dark Woods", "Underground", "?"};               // Locations of the game
+    int discovered_locs {0};
+    int current_loc {0};             // Current location that player is in
+    int previous_loc = current_loc;
 
     // Welcome User
     HideOutput(15);
@@ -83,7 +101,7 @@ int main() {
         {
             {"", "Hello Stranger..\n"},
             {"", "Your name...?: \033[32m"},
-            {"<player>"},
+            {"<getname>"},
 
             {"", "Hello, "},
             {"<username>", ""},
@@ -109,13 +127,21 @@ int main() {
             {"",        "It will guide you.\n", 40ms, false, true},
 
             {"",        "You have acquired the " + ColorText("Map", "yellow") + ".\n", 150ms, false, true}
+        },
+
+        // MAP
+        {
+            {"<map>", ""},
+            {"", "\nEnter the location you like to go: ", 40ms, false, false},
+            {"<getinput>", ""}
         }
     };
 
     // Display Dialogues
-    for (int lvl=0; lvl<2; lvl++) {         // Game Order
+    for (int lvl=2; lvl<3; lvl++) {         // Game Order
         for (int dia=0; dia<13; dia++) {    // dialogue
-            if (dialogues[lvl][dia]->entity == "<player>") {
+
+            if (dialogues[lvl][dia]->entity == "<getname>") {
                 getline(cin, username);
                 cout << "\033[0m";
                 
@@ -125,9 +151,40 @@ int main() {
                 continue;
             }
 
-            if (dialogues[lvl][dia]->entity == "<username>") {
+            else if (dialogues[lvl][dia]->entity == "<username>") {
                 dialogues[lvl][dia]->msg = username + "\n"; // change to output 
                 dialogues[lvl][dia]->entity = "";    // delete string 
+            }
+
+            else if (dialogues[lvl][dia]->entity == "<map>") {
+                for (int loc=0; loc<5; loc++) {
+                    cout << loc << ". ";
+
+                    // Display Current Location
+                    if (current_loc == loc) {
+                        RenderText(ColorText(locations[loc], "bold").c_str());
+                        cout << setw(5) << " " << ColorText("(You are here)", "bold"); 
+                    }
+                    else if (loc <= discovered_locs)
+                        RenderText(locations[loc].c_str());
+                    else
+                        RenderText(ColorText(locations[loc], "grey").c_str());
+                    
+                    cout << endl;
+                }
+                continue;
+            }
+
+            else if (dialogues[lvl][dia]->entity == "<getinput>") {
+                if ((GetInput(0, discovered_locs+1 >> current_loc) == previous_loc)) {
+                    RenderText("Just wandering around? ", 40ms);
+                    sleep_for(350ms);
+                    RenderText("Alright then.\n");
+                    sleep_for(350ms);
+                    RenderText("Let's wander around.\n");
+                    sleep_for(350ms);
+                    RenderText("...!", 1000ms);
+                }
             }
 
             dialogues[lvl][dia]->display();
@@ -161,11 +218,18 @@ void HideOutput(int num) {
 // Purpose:
 // Specification:
 // Arguments:
-template <typename T>
-bool CheckInput(T sample, T target) {
-    if (target == sample)
-        return 1;
-    return 0;
+int GetInput(int min, int max) {
+    int result = 0;
+
+    while (!(cin >> result) || (result < min) || (result >= max)) {
+        cin.clear();
+        cin.ignore(1024, '\n');
+        
+        cout << "You cannot go the the location that does not exist!" << endl;
+        cout << "Please enter again: ";
+    }
+
+    return result;
 }
 
 // Purpose: To get any input from user
@@ -181,6 +245,9 @@ string WaitUser() {
     return user_input;
 }
 
+// Purpose: To color a string using ANSI color code
+// Specification: color a text from one of the preset colors from global hashmap and returns it back
+// Arguments: required a string text and string color name 
 string ColorText(string text, string color) {
     text = COLORS[color] + text + COLORS["reset"];
     return text;
