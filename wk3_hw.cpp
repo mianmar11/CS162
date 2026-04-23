@@ -18,6 +18,9 @@ using namespace this_thread;
 using namespace chrono;
 
 // Global Consts
+enum DIALOGUE_ORDER {EPILOGUE, MAP, };
+enum DIALOGUE_HEADERS {entity, msg, pace, display_entity, is_interactive, wait_time};
+
 unordered_map<string, string> COLORS {
     {"cyan",    "\033[36m"},
     {"yellow",  "\033[33m"},
@@ -27,7 +30,7 @@ unordered_map<string, string> COLORS {
     {"reset",   "\033[0m"}
 };
 
-unordered_map<string, milliseconds> durations {
+unordered_map<string, milliseconds> DURATIONS {
     {"150", 150ms},
     {"40", 40ms},
     {"35", 35ms},
@@ -74,43 +77,62 @@ int main() {
     // Welcome User
     HideOutput(15);
 
-    RenderText("Hello Stranger..\n");
-    RenderText("Your name...?: \033[32m");
-    getline(cin, username);
-    cout << "\033[0m";
-    username = ColorText(username, "green");      // Add color to player name
-    HideOutput(15);
-
-    RenderText("Hello, ");
-    RenderText(username.c_str());       // (Change the string to c string)
-    RenderText("\nWelcome to \033[36m.{Silver Grit}.\033[0m\n");
-    
-    WaitUser();
-
     // Epilogue
-    Dialogue dialogues[][4] {
-        {"[NPC]",   "Hello stranger,", 40ms, true},
-        {"",        "you are..\n", 80ms, false, true},
+    Dialogue dialogues[][13][wait_time] {
+        // Intro/Welcome user
+        {
+            {"", "Hello Stranger..\n"},
+            {"", "Your name...?: \033[32m"},
+            {"<player>"},
 
-        {"[NPC]",   "WAIT....", 80ms, true},
-        {"",        "Aren't you one of those heros that fought", 10ms, false},
-        {"",        ColorText("Mighty Evil???\n", "red"), 150ms, false, true},
+            {"", "Hello, "},
+            {"<username>", ""},
+            {"", "Welcome to \033[36m.{Silver Grit}.\033[0m\n", 40ms, false, true}
+        },
+        
+        // Epilogue
+        {
+            {"[NPC]",   "Hello stranger,", 40ms, true},
+            {"",        "you are..\n", 80ms, false, true},
 
-        {"[NPC]",   "Ahhh...\n", 80ms, true, false, 100},
-        {"[NPC]",   "My instincts are still correct.\n", 40ms, false, false, 100},
-        {"[NPC]",   "But you are not getting anywhere with those " + ColorText("wounds.\n", "red"), 40ms},
-        {"[NPC]",   "There is a " + ColorText("village", "cyan") + " nearby. You should visit it.\n", 40ms, false, true},
+            {"[NPC]",   "WAIT....", 80ms, true},
+            {"",        "Aren't you one of those heros that fought", 10ms, false},
+            {"",        ColorText("Mighty Evil???\n", "red"), 150ms, false, true},
 
-        {"[NPC]",   "Here,", 50ms, true, false, 300},
-        {"",        "take this.", 30ms, false, false, 300},
-        {"",        "It will guide you.\n", 40ms, false, true},
+            {"[NPC]",   "Ahhh...\n", 80ms, true, false, 100},
+            {"[NPC]",   "My instincts are still correct.\n", 40ms, false, false, 100},
+            {"[NPC]",   "But you are not getting anywhere with those " + ColorText("wounds.\n", "red"), 40ms},
+            {"[NPC]",   "There is a " + ColorText("village", "cyan") + " nearby. You should visit it.\n", 40ms, false, true},
 
-        {"",        "You have acquired the " + ColorText("Map", "yellow") + ".\n", 150ms, false, true}
+            {"[NPC]",   "Here,", 50ms, true, false, 300},
+            {"",        "take this.", 30ms, false, false, 300},
+            {"",        "It will guide you.\n", 40ms, false, true},
+
+            {"",        "You have acquired the " + ColorText("Map", "yellow") + ".\n", 150ms, false, true}
+        }
     };
 
     // Display Dialogues
-    for (int idx=0; idx<13; idx++) {
-        dialogues[idx]->display();
+    for (int lvl=0; lvl<2; lvl++) {         // Game Order
+        for (int dia=0; dia<13; dia++) {    // dialogue
+            if (dialogues[lvl][dia]->entity == "<player>") {
+                getline(cin, username);
+                cout << "\033[0m";
+                
+                username = ColorText(username, "green");
+                HideOutput(15);
+                
+                continue;
+            }
+
+            if (dialogues[lvl][dia]->entity == "<username>") {
+                dialogues[lvl][dia]->msg = username + "\n"; // change to output 
+                dialogues[lvl][dia]->entity = "";    // delete string 
+            }
+
+            dialogues[lvl][dia]->display();
+        }
+        cout << endl;
     }
 
     return 0;
