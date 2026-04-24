@@ -30,6 +30,7 @@ using namespace chrono_literals;
 using namespace this_thread;
 using namespace chrono;
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // Global Consts
 enum DIALOGUE_ORDER {EPILOGUE, MAP, };
 enum DIALOGUE_HEADERS {entity, msg, pace, display_entity, is_interactive, wait_time};
@@ -51,165 +52,190 @@ unordered_map<string, milliseconds> DURATIONS {
     {"10", 10ms}
 };
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // Func Prototypes
 void RenderText(const char[], 
-    milliseconds duration = 40ms);      // Display text at a pace just like in actual games
-void HideOutput(int);                   // Hide the previous output by n number 
-string WaitUser();                      // Get User Input and Check with sample 
-string ColorText(string, string);       // Colors the text
-int GetInput(int, int);                 // Get int user input
+    milliseconds duration = 40ms);                  // Display text at a pace just like in actual games
+void HideOutput(int);                               // Hide the previous output by n number 
+string WaitUser();                                  // Get User Input and Check with sample 
+string ColorText(string, string);                   // Colors the text
+int GetInput(int, int);                             // Get int user input
 void ShowMap(string[], int, int);
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // Structs
 struct Dialogue {
-    string entity;                      // Narrator such as "[NPC]" in color
-    string msg;                         // Dialogue of a entity or place
-    milliseconds pace = 40ms;           // Render speed 40 milliseconds
-    bool display_entity = false;         // display entity name or not
-    bool is_interactive = false;        // user interaction
-    int wait = 0;                       // seconds to wait before passing to another dialogue
+    string entity;                                  // Narrator such as "[NPC]" in color
+    string msg;                                     // Dialogue of a entity or place
+    milliseconds pace = 40ms;                       // Render speed 40 milliseconds
+    bool display_entity = false;                    // display entity name or not
+    bool is_interactive = false;                    // user interaction
+    int wait = 0;                                   // seconds to wait before passing to another dialogue
 
     void display() {
-        entity += " ";
-
-        if (display_entity)             // Display entity name
+        if (display_entity)                         // Display entity name
             cout << ColorText(entity, "yellow");
-        else 
+        else  if (this->entity.length() != 0)
             cout << left << setw(entity.length()) << " ";
 
-        RenderText(msg.c_str(), pace);  // Render Dialogue
+        RenderText(msg.c_str(), pace);              // Render Dialogue
         sleep_for(milliseconds(wait));
-        if (is_interactive) WaitUser(); // wait for player interaction
+        if (is_interactive) WaitUser();             // wait for player interaction
     }
 };
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 int main() {
     // Init Variable
-    string username;                        // Player name
-    string locations[] {                    // Locations of the game
+    string username;                                // Player name
+    string locations[] {                            // Locations of the game
         "Main", 
         "Village", 
         "Dark Woods", 
         "Underground", 
         "?"};               
-    int discovered_locs {0};                // Discovered locations
-    int current_loc {0};                    // Current location that player is in
-    int previous_loc = current_loc;         // keeps tracks of locations
-    bool display_system_dialogue = true;    // false will display entity dialogues
+    int discovered_locs {0};                        // Discovered locations
+    int current_loc {0};                            // Current location that player is in
+    int previous_loc = current_loc;                 // keeps tracks of locations
+    bool display_system_dialogue = true;            // false will display entity dialogues
+    bool is_running = true;                         // game state
 
     // Dialogues
-    Dialogue entity_dialogues[][20][wait_time] {
-        // Epilogue
-        {
-            {"[NPC]",   "Hello stranger,", 40ms, true},
-            {"",        "you are..\n", 80ms, false, true},
-
-            {"[NPC]",   "WAIT....", 80ms, true},
-            {"",        "Aren't you one of those heros that fought", 10ms, false},
-            {"",        ColorText("Mighty Evil???\n", "red"), 150ms, false, true},
-
-            {"[NPC]",   "Ahhh...\n", 80ms, true, false, 100},
-            {"[NPC]",   "My instincts are still correct.\n", 40ms, false, false, 100},
-            {"[NPC]",   "But you are not getting anywhere with those " + ColorText("wounds.\n", "red"), 40ms},
-            {"[NPC]",   "There is a " + ColorText("village", "cyan") + " nearby. You should visit it.\n", 40ms, false, true},
-
-            {"[NPC]",   "Here,", 50ms, true, false, 300},
-            {"",        "take this.", 30ms, false, false, 300},
-            {"",        "It will guide you.\n", 40ms, false, true},
-            {"<swapToSystem>"}
-        },
-    };
     Dialogue system_dialogues[][20][wait_time] {
         // Intro/Welcome user
         {
             {"", "Hey Stranger..\n"},
             {"", "Your name...?: \033[32m"},
+
             {"<getname>"},
 
-            {"", "Hello,"},
-            {"<username>", ""},
+            {"", "Hello, "},
+            {"<username>"},
+
             {"", "Welcome to \033[36m.{Silver Grit}.\033[0m\n", 40ms, false, true},
-            {"<swapToEntity>"}
+
+            {"<switchToEntity>"}
         },
 
         {
-            {"", "You have acquired the " + ColorText("Map", "yellow") + ".\n", 150ms, false, true},
+            {"", ColorText("You have acquired the Map.\n", "cyan"), 150ms, false, true},
+
             {"<displayMap>"},
+            
             {"", "\nEnter the location you like to go: ", 40ms, false, false},
+            
             {"<getInput>", ""}
         },
 
         // Map Selection Narratives
-        {   
-            // Same Direction Dialogues
-            {"", "Just wandering around?\n", 40ms, false, true, 350},
-            {"", "Alright then.\n", 40ms, false, false, 350},
-            {"", "Let's wander around.\n", 40ms, false, false, 350},
-            {"", "...!\n", 100ms},
-            {"", "You have reached the destination!\n"},
-            {"<end>"},
-
-            {"", "Are you sure you want to be in the same place?\n", 40ms, false, true, 350},
-            {"", "As you wish.\n", 40ms, false, false, 350},
-            {"", "Enjoy some views while taking a break.\n", 40ms, false, false, 350},
-            {"", "...!\n", 100ms},
-            {"", "You have reached the destination!\n"},
-
-            {"", "You do have time before your next adventure huh?\n", 40ms, false, true, 350},
-            {"", "Alright.\n", 40ms, false, false, 350},
-            {"", "Take your time.\n", 40ms, false, false, 350},
-            {"", "...!\n", 100ms},
-            {"", "You have reached the destination!\n"},
-        }, 
-
         // New Direction Dialogues
         {
             {"", "New adventure waits ahead!\n", 40ms, false, false, 350},
             {"", "Let's GO!!\n", 40ms, false, false, 350},
-            {"", "...!\n", 100ms},
-            {"", "You have reached the destination!\n"},
+            {"", "...!\n", 1000ms},
+            {"", "You have reached the destination!\n", 40ms, false, true},
+
+            {"<switchToEntity>"}
+        },
+
+        {
+            {"",    "....\n", 1000ms, false, false},
+            {"",    ColorText("You have been regenerated!\n", "cyan"), 80ms, false, true},
+
+            {"<end>"}
         }
-        
     };
-    Dialogue *current_dialogue = nullptr;
-    string display_mode = "system";
-    int entity_dialogue_idx = 0;            // Index of dialogue block
-    int system_dialogue_idx = 0;            // Index of dialogue block
+    Dialogue entity_dialogues[][20][wait_time] {
+        // Epilogue
+        {
+            {"[NPC] ",   "Hello stranger, ", 40ms, true},
+            {"",        "you are..\n", 80ms, false, true},
+
+            {"[NPC] ",   "WAIT.... ", 80ms, true},
+            {"",        "Aren't you one of those heros that fought ", 10ms, false},
+            {"",        ColorText("Mighty Evil???\n", "red"), 150ms, false, true},
+
+            {"[NPC] ",   "Ahhh...\n", 80ms, true, false, 100},
+            {"[NPC] ",   "My instincts are still correct.\n", 40ms, false, false, 100},
+            {"[NPC] ",   "But you are not getting anywhere with those " + ColorText("wounds.\n", "red"), 40ms},
+            {"[NPC] ",   "There is a " + ColorText("village", "cyan") + " nearby. You should visit it.\n", 40ms, false, true},
+
+            {"[NPC] ",   "Here, ", 50ms, true, false, 300},
+            {"",        "take this. ", 30ms, false, false, 300},
+            {"",        "It will guide you.\n", 40ms, false, true},
+
+            {"<switchToSystem>"}
+        },
+
+        // Village
+        {
+            {"[Village Host] ",     "Ohh my...\n", 80ms, true},
+            {"[Village Host] ",     "What had happened to you to look that red with all those wounds? "},
+            {"<username>",          "", 40ms, false, false},
+
+            {"[Village Host] ",     "Yeah....\n", 100ms, true},
+            {"[Village Host] ",     "They have been destroying everything in their way...\n", 40ms, false, true},
+            
+            {"[Village Host] ",     "They also took my daughter...\n", 40ms, true},
+            {"[Village Host] ",     "I am very worried of her but we are so hopeless....\n", 40ms, false, true},
+
+            {"[Village Host] ",     "Please save her from ", 40ms, true},
+            {"",                    ColorText("Thord.\n", "red"), 100ms},
+            {"[Village Host] ",     "I beg you please!\n", 40ms, false, true},
+
+            {"[Player] ",           "....\n", 800ms, true, true},
+
+            {"[Village Host] ",     "Does that silence mean ", 40ms, true},
+            {"",     ColorText("Yes", "cyan")+"?\n", 40ms, false, true},
+
+            {"[Village Host] ",     "Thank you my son! ", 40ms, true},
+            {"",                    "I owe you a lot!\n", 40ms, false, true},
+            
+            {"[Village Host] ",     "Please rest at our tent, ", 30ms, true, false, 500},
+            {"",                    "We will treat your wounds for you.\n", 40ms, false, true},
+
+            {"<switchToSystem>"}
+        }
+    };
+    
+    // Dialogue mechanics
+    Dialogue *current_dialogue = nullptr;           // ptr that points to corresponding dialogue
+    string display_mode = "system";                 // Display mode used to determine which dialogue to display (system or entity)
+    int entity_dialogue_idx = 0;                    // Index of dialogue block
+    int system_dialogue_idx = 0;                    // Index of dialogue block
 
     // Display Dialogues
     current_dialogue = &system_dialogues[0][0][0];  // Point to the address of corresponding dialogue
-    // current_dialogue->display();
-    // system_dialogues[0][0]->display();
-    // cout << current_dialogue+ << ' ' << system_dialogues[0][1] << endl;
-    // cout << (system_dialogues[0][0]) << endl;
-    // (system_dialogues[0][1])->display();
-    int *block = &system_dialogue_idx;
-    // current_dialogue->display();
+    int *block = &system_dialogue_idx;              // One Dialoge Block [][]
     
-    while (*block < 3) {                            // Game Order
-        for (int line=4; line<20; line++) {         // dialogue
+    while (is_running == true) {                            // Game Order
+        for (int line=0; line<20; line++) {         // dialogue
             
-            // update current dialogue pointer
-            if (display_mode == "system")
-                current_dialogue = &system_dialogues[*block][line][0];
-            else if (display_mode == "entity")
+            // Update current dialogue pointer
+            if (display_mode == "system")           // grab the system dialogue to display
+                current_dialogue = &system_dialogues[*block][line][0];  
+            else if (display_mode == "entity")      // grab the entity dialogye to display
                 current_dialogue = &entity_dialogues[*block][line][0];
             
-            // check which dialogue pointer to point to for next dialogue 
-            if (current_dialogue->entity == "<swapToEntity>") {
-                *block += 1;
-                line = -1;
-                block = &entity_dialogue_idx;
-                display_mode = "entity";
-                continue;
-            } else if (current_dialogue->entity == "<swapToSystem>") {
-                *block += 1;
-                line = -1;
-                block = &system_dialogue_idx;
-                display_mode = "system";
-                continue;
+            // Check which dialogue pointer to point to for next dialogue 
+            if (current_dialogue->entity == "<switchToEntity>") {
+                *block += 1;                        // increment system dialogue index
+                line = -1;                          // reset dialogue line
+                block = &entity_dialogue_idx;       // switch to entity dialogue index
+                display_mode = "entity";            // switch display mode to display entity dialogues
 
+                cout << "Switched to Entity Dialogue, Current Idx: " << *block << endl;
+
+                continue;                           // skips code below
+            } else if (current_dialogue->entity == "<switchToSystem>") {
+                *block += 1;                        // Increment entity dialogue index      
+                line = -1;                          // reset dialoge line
+                block = &system_dialogue_idx;       // swich to system diallogue index 
+                display_mode = "system";            // swith display mode to display system dialogues
+                
+                cout << "Switched to System Dialogue. Current Idx: " << *block << endl;
+
+                continue;                           // skips code below
             }
 
             // Game Input 
@@ -240,27 +266,29 @@ int main() {
             else if (current_dialogue->entity == "<getInput>") {
                 current_loc = GetInput(0, discovered_locs+1);
                 
-                if (current_loc == previous_loc) { // went the same place
-                    RenderText("Just wandering around? ", 40ms);
-                    sleep_for(350ms);
-                    RenderText("Alright then.\n");
-                    sleep_for(350ms);
-                    RenderText("Let's wander around.\n");
-                    sleep_for(350ms);
-                    RenderText("...!\n", 1000ms);
-                    RenderText("You have reached the destination!\n");
-
-                    ShowMap(locations, current_loc, discovered_locs);
+                if (current_loc == previous_loc) {
+                    RenderText("You are in that location already. Choose another one: ");
+                    line = line-1;
+                    continue;
                 }
+            }
+
+            else if (current_dialogue->entity == "<end>")    {
+                is_running = false;
+                break;
             }
 
             current_dialogue->display();
         }
         cout << endl;
         *block += 1;
+        cout << (block == &system_dialogue_idx ? "System Dialogue Idx: " :  "Entity Dialogue Idx: ") << *block << endl;
     };
     
+    // Handshake
+    cout << "Program Complete." << endl;
     
+    // End Normally
     return 0;
 }
 
@@ -290,12 +318,12 @@ void HideOutput(int num) {
 int GetInput(int min, int max) {
     int result = 0;
 
-    while (!(cin >> result) || (result < min) || (result >= max)) {
+    while (!(cin >> result) || (result < min) || (result > max)) {
         cin.clear();
         cin.ignore(1024, '\n');
         
-        cout << "You cannot go the the location that does not exist!" << endl;
-        cout << "Please enter again: ";
+        RenderText("You cannot go the the location that does not exist!\n", 20ms);
+        RenderText("Please enter again: ");
     }
 
     return result;
