@@ -9,8 +9,9 @@ game rather than in command-line game. The main purpose is to introduce
 game feels to the player even in the command line. 
 
 Specification: It involve managing different dialogues, travel advancements
-in linear progress, color texts and speed of text rendering. These will 
-make the player feel like the game is interacting with them and not just 
+in linear progress, color texts and speed of text rendering. The dialogue 
+mechanics uses pointers to make the code dynamic for choosing which dialogues 
+to play.
 
 Credits: StackOverflow, cppreference.com, W3School, IBM, Microsoft Learn,
 Medium, BroCode(YT)
@@ -24,6 +25,7 @@ Medium, BroCode(YT)
 #include <chrono> // for chrono_literals
 #include <thread> // for this_thread
 #include <unordered_map> // hashmap or dictionary
+#include <random>
 
 using namespace std;
 using namespace chrono_literals;
@@ -32,7 +34,6 @@ using namespace chrono;
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // Global Consts
-enum DIALOGUE_ORDER {EPILOGUE, MAP, };
 enum DIALOGUE_HEADERS {entity, msg, pace, display_entity, is_interactive, wait_time};
 
 unordered_map<string, string> COLORS {
@@ -54,13 +55,16 @@ unordered_map<string, milliseconds> DURATIONS {
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // Func Prototypes
-void RenderText(const char[], 
-    milliseconds duration = 40ms);                  // Display text at a pace just like in actual games
-void HideOutput(int);                               // Hide the previous output by n number 
-string WaitUser();                                  // Get User Input and Check with sample 
-string ColorText(string, string);                   // Colors the text
-int GetInput(int, int);                             // Get int user input
-void ShowMap(string[], int, int);
+void RenderText(
+    const char[], 
+    milliseconds duration = 40ms);          // Display text at a pace just like in actual games
+void HideOutput(int);                       // Hide the previous output by n number 
+string WaitUser();                          // Get User Input and Check with sample 
+string ColorText(string, string);           // Colors the text
+int GetInput(int, int);                     // Get int user input
+void ShowMap(string[], int, int);           // Display Map
+int generateRandomInt(int);                 // Generate Random Number
+void ShowPlayerOption();                     // Show player mechanics
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // Structs
@@ -91,19 +95,24 @@ int main() {
     string locations[] {                            // Locations of the game
         "Main", 
         "Village", 
-        "Dark Woods", 
-        "Underground", 
         "?"};               
     int discovered_locs {0};                        // Discovered locations
     int current_loc {0};                            // Current location that player is in
     int previous_loc = current_loc;                 // keeps tracks of locations
-    bool display_system_dialogue = true;            // false will display entity dialogues
+    string weapons[4] {
+        ColorText("Arch Katana", "blue"), 
+        ColorText("Chain & Sickle", "yellow"),
+        ColorText("Crimson Oak Stick", "red"),
+        ColorText("Heavens' Spear", "cyan")
+    };
+    int current_weapon = 0;
     bool is_running = true;                         // game state
 
     // Dialogues
     Dialogue system_dialogues[][20][wait_time] {
+        // Order 1
         // Intro/Welcome user
-        {
+        {   
             {"", "Hey Stranger..\n"},
             {"", "Your name...?: \033[32m"},
 
@@ -117,8 +126,9 @@ int main() {
             {"<switchToEntity>"}
         },
 
+        // Order 3
         {
-            {"", ColorText("You have acquired the Map.\n", "cyan"), 150ms, false, true},
+            {"", ColorText("You have acquired the Map.\n", "cyan"), 80ms, false, true},
 
             {"<displayMap>"},
             
@@ -127,8 +137,8 @@ int main() {
             {"<getInput>", ""}
         },
 
+        // Order 4
         // Map Selection Narratives
-        // New Direction Dialogues
         {
             {"", "New adventure waits ahead!\n", 40ms, false, false, 350},
             {"", "Let's GO!!\n", 40ms, false, false, 350},
@@ -138,14 +148,40 @@ int main() {
             {"<switchToEntity>"}
         },
 
+        // Order 6
         {
-            {"",    "....\n", 1000ms, false, false},
+            {"",    "....!\n", 1000ms, false, false},
             {"",    ColorText("You have been regenerated!\n", "cyan"), 80ms, false, true},
 
-            {"<end>"}
+            {"<switchToEntity>"}
+        },
+
+        // Order 8
+        // Random Weapon Selection
+        {
+            {"", ColorText("You have acquired " + weapons[generateRandomInt(4)], "cyan") + ".\n", 80ms, false, true},
+            
+            {"<switchToEntity>"}
+        },
+
+        // Order 10
+        {
+            {"", ColorText("New location discovered.\n", "cyan"), 80ms, false, true},
+
+            {"<updateMap>"},
+            {"<displayMap>"},
+            {"", "\nEnter the location you like to go: ", 40ms, false, false},
+
+            {"<getInput>"},
+
+            {"", "\n....!\n", 1000ms, false, false},
+            {"", "You have reached the destination!\n", 40ms, false, true},
+
+            {"<switchToEntity>"}
         }
     };
     Dialogue entity_dialogues[][20][wait_time] {
+        // Order 2
         // Epilogue
         {
             {"[NPC] ",   "Hello stranger, ", 40ms, true},
@@ -167,17 +203,18 @@ int main() {
             {"<switchToSystem>"}
         },
 
+        // Order 5
         // Village
         {
             {"[Village Host] ",     "Ohh my...\n", 80ms, true},
             {"[Village Host] ",     "What had happened to you to look that red with all those wounds? "},
-            {"<username>",          "", 40ms, false, false},
+            {"<username>",          "", 40ms, false, true},
 
             {"[Village Host] ",     "Yeah....\n", 100ms, true},
             {"[Village Host] ",     "They have been destroying everything in their way...\n", 40ms, false, true},
             
-            {"[Village Host] ",     "They also took my daughter...\n", 40ms, true},
-            {"[Village Host] ",     "I am very worried of her but we are so hopeless....\n", 40ms, false, true},
+            {"[Village Host] ",     "They also took my daughter...\n", 80ms, true},
+            {"[Village Host] ",     "I am very worried of her but we are so hopeless....\n", 80ms, false, true},
 
             {"[Village Host] ",     "Please save her from ", 40ms, true},
             {"",                    ColorText("Thord.\n", "red"), 100ms},
@@ -195,10 +232,54 @@ int main() {
             {"",                    "We will treat your wounds for you.\n", 40ms, false, true},
 
             {"<switchToSystem>"}
+        },
+
+        // Order 7
+        {
+            {"[Village Host] ", "You should have a ", 40ms, true},
+            {"",                ColorText("weapon", "cyan")},
+            {"",                " before you go.\n", 40ms, false, true},
+
+            {"[Village Host] ", "We have great smiths and artisans in this village.\n", 40ms, true},
+            {"[Village Host] ", "Here, open this chest.\n", 40ms, false, true},
+
+            {"[Village Host] ", "It is a legendary chest that gives the people best weapons that are destined.\n", 40ms, true, true},
+
+            {"<switchToSystem>"}
+        },
+
+        // Order 9
+        {
+            {"[Village Host] ", "What a incredible weapon!\n", 40ms, true},
+            {"[Village Host] ", "I have never seen someone gets a weapon this powerful!\n", 40ms, false, true},
+
+            {"[Player] ",       "....\n", 800ms, true, true},
+            
+            {"[Player] ",       "Where is your daughter?\n", 40ms, true, true},
+
+            {"[Village Host] ", "She is held at the " + ColorText("Crimson Chamber", "red") + ".\n", 40ms, true, true},
+
+            {"[Player] ",       "Wait till I return.\n", 80ms, true, true},
+
+            {"<switchToSystem>"}
+        },
+
+        // Order 11
+        {
+            {"[Thord] ",        ColorText("Who is there!\n", "red"), 40ms, true, true},
+
+            {"[Player] ",       "....\n", 80ms, true, true},
+            
+            {"[Thord] ",        ColorText("YOU DARE STAY IN SILENCE WHILE I AM ASKING???\n", "red"), 20ms, true},
+            {"[Thord] ",        ColorText("PREPARE TO DIE WITH MY ATTACK!\n", "red"), 20ms, false, true},
+
+            {"<giveControl>"}
         }
     };
     
     // Dialogue mechanics
+    bool give_control = false;
+    int player_choice = 0;
     Dialogue *current_dialogue = nullptr;           // ptr that points to corresponding dialogue
     string display_mode = "system";                 // Display mode used to determine which dialogue to display (system or entity)
     int entity_dialogue_idx = 0;                    // Index of dialogue block
@@ -208,7 +289,9 @@ int main() {
     current_dialogue = &system_dialogues[0][0][0];  // Point to the address of corresponding dialogue
     int *block = &system_dialogue_idx;              // One Dialoge Block [][]
     
-    while (is_running == true) {                            // Game Order
+    while (is_running == true) {                    // Game Order
+        give_control = false;                       // reset 
+
         for (int line=0; line<20; line++) {         // dialogue
             
             // Update current dialogue pointer
@@ -224,7 +307,7 @@ int main() {
                 block = &entity_dialogue_idx;       // switch to entity dialogue index
                 display_mode = "entity";            // switch display mode to display entity dialogues
 
-                cout << "Switched to Entity Dialogue, Current Idx: " << *block << endl;
+                // cout << "Switched to Entity Dialogue, Current Idx: " << *block << endl;
 
                 continue;                           // skips code below
             } else if (current_dialogue->entity == "<switchToSystem>") {
@@ -233,7 +316,7 @@ int main() {
                 block = &system_dialogue_idx;       // swich to system diallogue index 
                 display_mode = "system";            // swith display mode to display system dialogues
                 
-                cout << "Switched to System Dialogue. Current Idx: " << *block << endl;
+                // cout << "Switched to System Dialogue. Current Idx: " << *block << endl;
 
                 continue;                           // skips code below
             }
@@ -263,14 +346,27 @@ int main() {
                 continue;
             }
 
+            else if (current_dialogue->entity == "<updateMap>") {
+                locations[2] = "Crimson Chamber";
+                discovered_locs += 1;
+                continue;
+            }
+
             else if (current_dialogue->entity == "<getInput>") {
                 current_loc = GetInput(0, discovered_locs+1);
                 
-                if (current_loc == previous_loc) {
-                    RenderText("You are in that location already. Choose another one: ");
+                if (current_loc <= previous_loc) {
+                    RenderText("You have reached that location already. Choose another one: ");
                     line = line-1;
                     continue;
                 }
+
+                previous_loc = current_loc;         // update location
+            }
+
+            else if (current_dialogue->entity == "<giveControl>") {
+                give_control = true;
+                break;
             }
 
             else if (current_dialogue->entity == "<end>")    {
@@ -280,9 +376,26 @@ int main() {
 
             current_dialogue->display();
         }
+
+        // Choice of attack and consequences
+        while (give_control == true) {
+            ShowPlayerOption();
+            player_choice = GetInput(0, 2);
+
+            if (player_choice == 0) {
+                RenderText("You have deflected his attack and killed in a blink instant!\n", 40ms);
+                RenderText((ColorText("Thord", "red")+ " has been defeated!\n").c_str(), 40ms);
+                give_control = false;
+                is_running = false;
+            } else {
+                RenderText("You have dodged his attack.\n", 40ms);
+                RenderText("Prepare for next attack!\n", 40ms);
+            }
+        }
+
         cout << endl;
-        *block += 1;
-        cout << (block == &system_dialogue_idx ? "System Dialogue Idx: " :  "Entity Dialogue Idx: ") << *block << endl;
+        *block += 1;    // Increment to next dialogue block
+        // cout << (block == &system_dialogue_idx ? "System Dialogue Idx: " :  "Entity Dialogue Idx: ") << *block << endl;
     };
     
     // Handshake
@@ -292,6 +405,7 @@ int main() {
     return 0;
 }
 
+//////////////////////////////////////////////////////////////////
 
 // Purpose: To render a text a each character at a time just like how dialogues are rendered in games
 // Specification: It loops through the character array until it reaches to the end or null character
@@ -322,7 +436,7 @@ int GetInput(int min, int max) {
         cin.clear();
         cin.ignore(1024, '\n');
         
-        RenderText("You cannot go the the location that does not exist!\n", 20ms);
+        RenderText("You cannot select that.\n", 20ms);
         RenderText("Please enter again: ");
     }
 
@@ -351,7 +465,7 @@ string ColorText(string text, string color) {
 }
 
 void ShowMap(string locations[], int current, int discovered) {
-    for (int loc=0; loc<5; loc++) {
+    for (int loc=0; loc<3; loc++) {
         cout << loc << ". ";
 
         // Display Current Location
@@ -369,3 +483,28 @@ void ShowMap(string locations[], int current, int discovered) {
         cout << endl;
     }
 }
+
+void ShowPlayerOption() {
+    cout << "0. Attack\n1. Dodge\n";
+    cout << "Your selection: ";
+}
+
+int generateRandomInt(int max) {
+    static bool initialized {false};
+
+    static mt19937 generator;  // Mersenne Twister
+
+    // Initialize the random engine if not already done
+    if (!initialized) {
+        // Use a random device to seed the generator
+        random_device rd;
+        generator.seed(rd());
+
+        initialized = true;
+    }
+
+    uniform_int_distribution<int> distribution(0, max - 1);
+    
+    return distribution(generator);
+}
+
