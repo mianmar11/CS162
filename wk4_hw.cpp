@@ -61,7 +61,7 @@ struct Vector2D {
     }
 
     // Uniform the Vector (Length of 1)
-    void uniform () {
+    void normalize() {
         double mag = magnitude();   // magnitude of the vector 
 
         x = x/mag;
@@ -70,9 +70,9 @@ struct Vector2D {
 
     // Angle between tw vectors
     double angle_towards(Vector2D other) {
-        double angle = 0;
+        double angle = acos((*this * other) / (this->magnitude() * other.magnitude())); // (deference 'this' first to get actual Vector2D)
 
-        return angle;
+        return angle * (180/3.14159265); // return degree of angle
     }
 };
 
@@ -81,8 +81,8 @@ ostream& operator<< (ostream& os, Vector2D vector);
 
 int main() {
     // Init Variable
-    Vector2D A = Vector2D{10, 5};
-    Vector2D B = Vector2D{-1, 5};
+    Vector2D A = Vector2D{0, 1};
+    Vector2D B = Vector2D{1, 0};
 
     // Welcome User 
     cout << "Welcome to 2D Vector Operation Program." << endl << endl;
@@ -93,15 +93,18 @@ int main() {
 
     // Display Vector Dot Product
     cout << "A * B: " << A*B << endl;
-
+    
     // Display Unit Vector 
-    A.uniform();
+    A.normalize();
     cout << "Unit Vector A: " << A << endl;
-
+    
     // Display Magnitude of the Vector
     cout << "Magnitude of the Vector A: " << A.magnitude() << endl;
-
-
+    
+    // Display Angle Between Two Vectors
+    cout << "Angle between A and B: " << A.angle_towards(B) << endl;
+    
+    
     // End Normally
     return 0;
 }
