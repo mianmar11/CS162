@@ -13,13 +13,14 @@ to function vector operations such as +, -, *.
 */
 
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
 // Structs
 struct Vector2D {
-    int x = 0;
-    int y = 0;
+    double x = 0;
+    double y = 0;
 
     // Addition
     Vector2D operator+ (Vector2D other) {
@@ -50,9 +51,28 @@ struct Vector2D {
         return result;
     }
 
+    // Magnitude of the Vector
+    double magnitude() {
+        double result;
+
+        result = sqrt(x*x + y*y);
+
+        return result;
+    }
+
     // Uniform the Vector (Length of 1)
     void uniform () {
-        
+        double mag = magnitude();   // magnitude of the vector 
+
+        x = x/mag;
+        y = y/mag;
+    }
+
+    // Angle between tw vectors
+    double angle_towards(Vector2D other) {
+        double angle = 0;
+
+        return angle;
     }
 };
 
@@ -61,7 +81,7 @@ ostream& operator<< (ostream& os, Vector2D vector);
 
 int main() {
     // Init Variable
-    Vector2D A = Vector2D{1, 0};
+    Vector2D A = Vector2D{10, 5};
     Vector2D B = Vector2D{-1, 5};
 
     // Welcome User 
@@ -73,6 +93,14 @@ int main() {
 
     // Display Vector Dot Product
     cout << "A * B: " << A*B << endl;
+
+    // Display Unit Vector 
+    A.uniform();
+    cout << "Unit Vector A: " << A << endl;
+
+    // Display Magnitude of the Vector
+    cout << "Magnitude of the Vector A: " << A.magnitude() << endl;
+
 
     // End Normally
     return 0;
