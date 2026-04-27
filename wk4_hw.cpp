@@ -10,6 +10,8 @@ Algebra class.
 Specification: The struct vector2D is able to function vector operations and 
 even find the angle between two vectors. It will overload multiple operators 
 to function vector operations such as +, -, *.
+
+credits: stackoverflow (dereferecing 'this')
 */
 
 #include <iostream>
@@ -81,8 +83,8 @@ ostream& operator<< (ostream& os, Vector2D vector);
 
 int main() {
     // Init Variable
-    Vector2D A = Vector2D{0, 1};
-    Vector2D B = Vector2D{1, 0};
+    Vector2D A = Vector2D{13, -7};
+    Vector2D B = Vector2D{16, 2};
 
     // Welcome User 
     cout << "Welcome to 2D Vector Operation Program." << endl << endl;
@@ -90,19 +92,35 @@ int main() {
     // Display Vectors
     cout << "A: " << A << endl;
     cout << "B: " << B << endl;
+    cout << endl;
+
+    // Display Vector Addition
+    cout << "B + A: " << B + A << endl;
+    cout << endl;
+
+    // Display Vector Subtraction
+    cout << "A - B: " << A - B << endl;
+    cout << endl;
 
     // Display Vector Dot Product
     cout << "A * B: " << A*B << endl;
+    cout << endl;
     
     // Display Unit Vector 
     A.normalize();
+    B.normalize();
     cout << "Unit Vector A: " << A << endl;
+    cout << "Unit Vector B: " << B << endl;
+    cout << endl;
     
     // Display Magnitude of the Vector
     cout << "Magnitude of the Vector A: " << A.magnitude() << endl;
+    cout << "Magnitude of the vector B: " << B.magnitude() << endl;
+    cout << endl;
     
     // Display Angle Between Two Vectors
     cout << "Angle between A and B: " << A.angle_towards(B) << endl;
+    cout << endl;
     
     
     // End Normally
