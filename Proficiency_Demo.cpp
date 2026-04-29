@@ -37,20 +37,23 @@ struct Point {
         return result;
     }
 
-    ostream& operator<< (ostream& os) {
-        os << "(" << this->x << ", " << this->y << ")";
-        return os;
-    }
+    // ostream& operator<< (ostream& os) {
+    //     os << "(" << this->x << ", " << this->y << ")";
+        // return os;
+    // }
 };
 
 // Function Prototype/Declaration
-// ostream& operator<< (ostream& os, Point);
+ostream& operator<< (ostream& os, Point);
 
 int main() {
     // Init Variables 
     Point A{1, -1};
     Point B{-1, 1};
 
+    cout << "A + B: " << A + B << endl << endl;
+
+    cout << "A - b: ";
     cout << A - B << endl;
     
     // End Normally
@@ -58,7 +61,7 @@ int main() {
 }
 
 // Function Definition
-// ostream& operator<< (ostream& os, Point p) {
-//     os << "(" << p.x << ", " << p.y << ")";
-//     return os;
-// }
+ostream& operator<< (ostream& os, Point p) {
+    os << "(" << p.x << ", " << p.y << ")";
+    return os;
+}
