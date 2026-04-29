@@ -39,11 +39,12 @@ struct Point {
 
     ostream& operator<< (ostream& os) {
         os << "(" << this->x << ", " << this->y << ")";
+        return os;
     }
 };
 
-// Function Prototype
-ostream& operator<< (ostream& os, Point);
+// Function Prototype/Declaration
+// ostream& operator<< (ostream& os, Point);
 
 int main() {
     // Init Variables 
@@ -56,8 +57,8 @@ int main() {
     return 0;
 }
 
-// Function Declaration
-ostream& operator<< (ostream& os, Point p) {
-    os << "(" << p.x << ", " << p.y << ")";
-    return os;
-}
+// Function Definition
+// ostream& operator<< (ostream& os, Point p) {
+//     os << "(" << p.x << ", " << p.y << ")";
+//     return os;
+// }
