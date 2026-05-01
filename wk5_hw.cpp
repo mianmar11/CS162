@@ -20,7 +20,7 @@ display either Retail or Wholesale customer depending on their status data.
 using namespace std;
 
 // Global constants
-const int NAME_LENGTH = 15;
+const int NAME_LENGTH = 16;
 const int ID_LENGTH = 7;
 const int CITY_LENGTH = 16;
 const int STATE_LENGTH = 14;
@@ -28,21 +28,32 @@ const int STATE_LENGTH = 14;
 // Structs
 struct Customer {
     // data members
-    char name[NAME_LENGTH] {};      // 14 length name char with ending \0
+    char name[NAME_LENGTH] {};      // 15 length name char with ending \0
     char id[ID_LENGTH] {};          // 6 length id (like mhcc) with ending \0
     char city[CITY_LENGTH] {};      // 15 length city name with ending \0
     char state[STATE_LENGTH] {};    // 13 length state name
-    char company[NAME_LENGTH] {};   // 14 length company name
+    char company[NAME_LENGTH] {};   // 15 length company name
     char customer_type {};          // 1 length customer type
+
+    // member function
+    void display (ostream& os) {
+        static string STATUS[] = {"Wholesale", "Retail"};
+
+        os << left << setw(NAME_LENGTH) << id << setw(NAME_LENGTH) << name << setw(NAME_LENGTH) << city << setw(NAME_LENGTH) 
+        << state << setw(NAME_LENGTH) << company << setw(10) << STATUS[customer_type == 'R'] << endl;
+    }
 };
 
 // Function Declaration
 int Initialize(Customer* &);
 void Display(Customer* &, int);
 void LookUp(Customer* &, int);
+void DisplayHeaders(string [], int);
 
 int main() {
     // Init Variables
+    string headers[] {"ID", "Name", "City", "State", "Company", "Type"};
+    int header_size = 6;
     Customer *customers {nullptr};
     int size {};
 
@@ -53,6 +64,7 @@ int main() {
     size = Initialize(customers);
 
     // Display populated customers
+    DisplayHeaders(headers, header_size);
     Display(customers, size);
     
     // Look Up customer
@@ -77,20 +89,34 @@ int Initialize(Customer* &arr) {
     const int size {5};            // size of the array
     
     arr = new Customer[] {
-        {"Zaw", "847922", "Portland", "Oregon", 'R'},
-        {"Han", "928471", "San Jose", "California", 'W'},
-        {"Jiya", "205821", "Chicago", "Illinois", 'R'},
-        {"Hoya", "589101", "San Francisco", "California", 'R'},
-        {"Purity", "019231", "New York", "New York", 'W'}, 
+        {"Zaw", "847922", "Portland", "Oregon", "Nvidia", 'R'},
+        {"Han", "928471", "San Jose", "California", "AMD", 'W'},
+        {"Jiya", "205821", "Chicago", "Illinois", "Pinterest", 'R'},
+        {"Hoya", "589101", "San Francisco", "California", "OpenAI", 'R'},
+        {"Purity", "019231", "New York", "New York", "Dolce & Gabbana", 'W'}, 
     };
 
     return size;
 }
 
-void Display(Customer* &, int) {
-
+void Display(Customer* &arr, int size) {
+    for (int idx=0; idx<size; ++idx) 
+        arr[idx].display(cout);
+    cout << endl;
 }
 
 void LookUp(Customer* &, int) {
     
+    
+    // Prompt User
+
+    // Search For User
+}
+
+void DisplayHeaders(string arr[], int size) {
+    cout << left << setw(NAME_LENGTH);
+    for (int idx=0; idx<size; idx++) {
+        cout << arr[idx] << setw(NAME_LENGTH);
+    }
+    cout << endl << endl;
 }
