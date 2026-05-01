@@ -1,4 +1,8 @@
 /******************************************************************************
+Zaw Ye Yaint Naing
+
+CS162 Spring - Mitch Priestley
+
 Database.cpp
 CS162 Week 5 Lab 2
 
@@ -144,5 +148,5 @@ int LoadData(Student*, int) {
 }
 
 void LookUp(Student*, int) {
-    
+
 }
