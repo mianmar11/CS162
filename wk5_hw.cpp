@@ -85,6 +85,9 @@ int main() {
 
 
 // Function Definition
+// Purpose: To populate the array with Customer datatypes
+// Arguments: requires Customer* array
+// Returns: int size of the array
 int Initialize(Customer* &arr) {
     const int size {5};            // size of the array
     
@@ -99,12 +102,18 @@ int Initialize(Customer* &arr) {
     return size;
 }
 
+// Purpose: To display the data of all the customers
+// Arguments: Requires Customer* array and size
+// Returns: None
 void Display(Customer* &arr, int size) {
     for (int idx=0; idx<size; ++idx) 
         arr[idx].display(cout);
     cout << endl;
 }
 
+// Purpose: To look up the customer with their id
+// Arguments: Requires Customer* array and size
+// Returns: none
 void LookUp(Customer* &arr, int size) {
     char target[NAME_LENGTH] {};    // target to look up
     int idx {};                     // idx of target
@@ -123,6 +132,9 @@ void LookUp(Customer* &arr, int size) {
         cout << "User ID [" << target << "] not found." << endl;
 }
 
+// Purpose: To display data headings
+// Arguments: Requires Customer* array and size
+// Returns: None
 void DisplayHeaders(string arr[], int size) {
     // Loop through the header and display the header
     for (int idx=0; idx<size; idx++) {
