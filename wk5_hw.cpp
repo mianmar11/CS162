@@ -77,7 +77,7 @@ int main() {
     customers = nullptr;
 
     // Handshake
-    cout << "\nProgram Complete" << endl << endl;
+    cout << "\nProgram Complete." << endl << endl;
 
     // End Normally
     return 0;
@@ -105,18 +105,28 @@ void Display(Customer* &arr, int size) {
     cout << endl;
 }
 
-void LookUp(Customer* &, int) {
-    
+void LookUp(Customer* &arr, int size) {
+    char target[NAME_LENGTH] {};    // target to look up
+    int idx {};                     // idx of target
     
     // Prompt User
+    cout << "Enter the ID of the customer to look up: ";
+
+    // Get Input
+    cin >> setw(NAME_LENGTH) >> target; // hold the limit of user input to name length
 
     // Search For User
+    for (idx=0; idx<size && strcmp(arr[idx].id, target) != 0; ++idx);  // (strcmp() compares two string and returns a bool)
+    if (idx < size) // if found
+        arr[idx].display(cout);
+    else 
+        cout << "User ID [" << target << "] not found." << endl;
 }
 
 void DisplayHeaders(string arr[], int size) {
-    cout << left << setw(NAME_LENGTH);
+    // Loop through the header and display the header
     for (int idx=0; idx<size; idx++) {
-        cout << arr[idx] << setw(NAME_LENGTH);
+        cout << left << setw(NAME_LENGTH) << arr[idx];
     }
-    cout << endl << endl;
+    cout << endl << endl;                                                                               
 }
