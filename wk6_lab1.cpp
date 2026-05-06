@@ -14,13 +14,13 @@ A friend function overloads the <<operator to  permit cout <<pointA <<endl;
 */
 
 #include <iostream>
-#include "wk6_Point.h" // just like Python import
+#include "wk6_Point.cpp" // just like Python import
 
 using namespace std;
 
 int main() {
     // instantiate (meaning: create an instance of an object)
-    Point pointA; // relies on a default constructor
+    Point pointA = Point(6.0, 7.0); // relies on a default constructor
     Point pointB(5.0, 10.0); // relies on parameterized constructor
 
     cout << "Welcome to Points!" << endl << endl;
@@ -33,6 +33,8 @@ int main() {
     cout << "Point A is " << pointA << " and Point B is " << pointB << endl;
 
     cout << "Their sum is " << pointA + pointB << endl;
+
+    cout << "The magnitude of the sum is " << (pointA + pointB).abs() << endl;
 
     cout << "\nProgram Complete." << endl;
 
