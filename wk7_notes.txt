@@ -1,0 +1,11 @@
+copy constuctor - can deep copy or shallow copy the datas from the class to other class 
+
+shallow copy - uses shared memory address of the other class for its own data members 
+
+deep copy - copies the contents from the other class's memory into its own separate memory address 
+
+chaining - (a = b = c)
+
+If using overloading operator for =, might always want to return the class itself using *this
+this is called dereferencing 
+
