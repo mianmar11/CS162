@@ -5,7 +5,8 @@ to edit the 1) Update City (of customer) 2) Change Company Name (of customer)
 3) Display (all customers) 4) Exit. 
 
 
-Requirements:
+Requirements: It requires user to enter options for the following displays. 
+The user inputs must not have space betweeen them. 
 
 Specifications: This program will first find the record of the customers. If not,
 it will generate one by populating an array with Customer class and storing it to 
@@ -17,6 +18,3 @@ data members where private: ID, Type, State, Company Name, City.
 When Displaying the customer datas, it will call Customer.output() and display
 to any os destination. When editing member datas, it will call its setters to 
 update the data.  
-
-
-I/O Implementation: 

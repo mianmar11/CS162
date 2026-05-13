@@ -3,9 +3,22 @@ Zaw Ye Yaint Naing
 
 CS162 Spring - Mitch Priestley 
 
-Purpose:
+Purpose: This program allows the admin to pull the data record of the customers
+from an sample data populated array, or existing data file, look-up a customer 
+by their ID in both populated array and from the record file. The program allows 
+to edit the 1) Update City (of customer) 2) Change Company Name (of customer)
+3) Display (all customers) 4) Exit. 
 
-Specification: 
+Specification: This program will first find the record of the customers. If not,
+it will generate one by populating an array with Customer class and storing it to 
+the random-access file. Once it is 
+loaded, It will display welcome text and options to the user. The options text 
+will be displayed in a format using setw() for the purpose of clean UI. From the 
+options, the user is allowed to edit each customers' data. A custoemr holds these
+data members where private: ID, Type, State, Company Name, City. 
+When Displaying the customer datas, it will call Customer.output() and display
+to any os destination. When editing member datas, it will call its setters to 
+update the data.  
 
 Credits: CS161 Wk10 labs, Stackvoerflow, GeeksforGeeks
 */
