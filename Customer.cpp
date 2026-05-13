@@ -49,6 +49,13 @@ string Customer :: getID() {
     return id;
 }
 
+void Customer :: setCity(string newCity) {
+    strcpy(city, newCity.c_str());
+}
+void Customer :: setCompany(string newCompany) {
+    strcpy(companyName, newCompany.c_str());
+}
+
 void Customer :: output(std::ostream& os) {
     // os << "Hello world";
     // os << this->id << companyName << city << state << type;

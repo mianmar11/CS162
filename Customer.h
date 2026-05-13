@@ -18,6 +18,9 @@ class Customer {
         ~Customer();
 
         std::string getID();
+        void setCity(std::string);
+        void setCompany(std::string);
+
         bool matchID(char[]);
         void output(std::ostream&);
 };

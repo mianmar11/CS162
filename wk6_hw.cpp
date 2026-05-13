@@ -31,15 +31,19 @@ int LookUp(char[], Customer[], int);
 void DisplayHeaders();
 void DisplayData(Customer[], int);
 void DisplayOptions();
+int GetInput();
+void GetTarget(char[]);
+int UpdateOptions(char[], Customer[], int);
 
 int main() {
     // Init Variable 
     Customer customers[MAX];
     int size = 0;           // size of customers 
     int pos = 0;            // position of the target ID in array (if found), index
-    char target[4] = "";    // id of the customer to look up
-    Customer single;        // One customer variable to read and write
+    char target[5] = "";    // id of the customer to look up
+    Customer single;        // specific individual customer variable for reading and writing 
     fstream rafile;         // random access file where customer datas are stored
+    int isRunning = true;   // Flag state for option display
     
     // Welcome User
     cout << "Welcome to the Customer Database Program." << endl << endl; 
@@ -52,18 +56,41 @@ int main() {
     cout << endl;
 
     // Look Up Data
+    GetTarget(target);
     pos = LookUp(target, customers, size);
+
+    if (pos != -1) {
+        // Display Look Up data
+        cout << "From the array: " << endl;
+        customers[pos].output(cout);
+        cout << endl << endl;
+
+        cout << "From the file:" << endl;
+        rafile.open(FILENAME, ios::in | ios::binary);
+        rafile.seekg(pos * sizeof(Customer));
+        rafile.read(reinterpret_cast<char*>(&single), sizeof(Customer));
+        rafile.close();
+
+        single.output(cout);
+        cout << endl << endl;
+    } else {
+        cout << "Customer with ID [" << target << "] not found." << endl << endl;
+    }
 
     // Display Data
     DisplayHeaders();
     DisplayData(customers, size);
 
-    // Display Options
-    // DisplayOptions();
-
+    
     // Update Data Options
-    // UpdateOptions(single, customers, size);
+    do {
+        // Display Options
+        DisplayOptions();
+        isRunning = UpdateOptions(target, customers, size);
+        cout << endl;
+    } while (isRunning);
 
+    cout << "\nProgram Complete!" << endl;
 
     return 0;
 }
@@ -164,10 +191,83 @@ void DisplayData(Customer arr[], int size) {
         arr[idx].output(cout);
         cout << endl;
     }
+    cout << endl;
 }
 
 void DisplayOptions() {
     cout << "You have following options: " << endl;
     cout << "1) Update City          " << setw(2) << ' ' << "2) Change Company Name" << endl;
     cout << "3) Display All Customers" << setw(2) << ' ' << "4) Exit" << endl;
+}
+
+int GetInput() {
+    int choice = -1;
+
+    cout << "\nPlease enter your choice: ";
+
+    while (!(cin >> choice) || choice < 0 || choice > 4) {
+        cin.clear();
+        cin.ignore(1024, '\n');
+        cout << "Please enter the digits of the options above: ";
+    }
+
+    return choice;
+}
+
+void GetTarget(char target[]) { // (for func, char* instead of char[])
+    cout << "Please enter a customer ID: ";
+    cin >> target;
+}
+
+int UpdateOptions(char target[], Customer arr[], int size) {
+    int option = GetInput();    // User choice of option
+    int pos = 0;                // Get Target Pos
+    string update = "";         // Update use to change customer's setting
+    
+    switch (option) {
+        case 1:
+            GetTarget(target);                  // Get Target
+            pos = LookUp(target, arr, size);   
+            if (pos == -1 ) {                   // Display Error Message
+                cout << "Customer with ID [" << target << "] not found." << endl;
+                break;
+            }
+
+            // Set Customer City
+            cout << "Please enter a new city: ";
+            cin >> update;
+            arr[pos].setCity(update);
+
+            break;
+
+        case 2:
+            GetTarget(target);                  // Get Target
+            pos = LookUp(target, arr, size);    // Get Target Pos
+            if (pos == -1 ) {                   // Display Error Message
+                cout << "Customer with ID [" << target << "] not found." << endl;
+                break;
+            }
+
+            // Set Company Name
+            cout << "Pleae enter a new company name: ";
+            cin >> update;
+            arr[pos].setCompany(update);
+
+            break;
+
+        case 3:
+            DisplayHeaders();
+            DisplayData(arr, size);
+            break;
+
+        case 4: // Exit Code
+            return 0;
+            break;
+
+        default:
+            cout << "Error! The option " << option << " does not exist." << endl;
+            break;
+    }
+
+    return 1;
 }
