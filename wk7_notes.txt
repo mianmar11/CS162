@@ -9,3 +9,13 @@ chaining - (a = b = c)
 If using overloading operator for =, might always want to return the class itself using *this
 this is called dereferencing 
 
+operator double() const {return double} will let the Class assign to double datatype variable 
+
+inline functions: Functions that state the values of the variables in one line. (eg. Product.h)
+
+if use strcpy() to copy a char array, it could encounter an error where the 
+source char[] does not have null terminator and the other copies forever
+because. This is not safe 
+
+const by value is usually used by passed by reference, it would have no meaning
+if used in passed by value in parameters
