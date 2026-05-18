@@ -1,5 +1,7 @@
 // Class specification for Student class 
 #include <iostream>
+#include <string>
+
 #pragma once
 
 class Student { 
@@ -12,9 +14,10 @@ class Student {
         char city[13];      // 13 char city with ending \0
     
     public: 
-        Student(): id{++counter}, name{""},         // Default constructor
-            major{""}, gpa{0.0}, city{""} {};
-        Student(char[], char[], double, char[]);    // Parameterize constructor
+        Student(): name{""},         // Default constructor
+            major{""}, gpa{0.0}, city{""} {itoa(++counter, id, 10);};
+        Student(std::string, std::string, double, std::string);    // Parameterize constructor
+        Student(const Student& other);              // Copy Constructor
 
         void output(std::ostream&);         // write the member datas to any ostream destination or file
 
@@ -24,11 +27,11 @@ class Student {
         void setGpa(double);
         void setCity(char[]);
 
-        const char* getID();
-        const char* getName();
-        const char* getMajor();
-        const double getGpa();
-        const char* getCity();
+        const char* getID() const;
+        const char* getName() const;
+        const char* getMajor() const;
+        const double getGpa() const;
+        const char* getCity() const;
 
         friend std::ostream& operator<<(std::ostream&, Student&);
 };
