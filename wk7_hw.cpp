@@ -3,11 +3,19 @@ Zaw Ye Yaint Naing
 
 CS162 Spring - Mitch Priestley
 
-Purpose:
+Purpose: The purpose of this program is to store student data, look up student data
+and edit student data like a database. 
 
-Specification:
+Specification: This program uses a Student class to store Student informations. 
+Student class include private data members and public member functions. The program
+checks if the file exists and if not, generate a random access file with 4 sample.
+Each sample is a Student type and they are stored in heap memory with pointer array.
+Sample pointer array then writes to the random access file and reads back into the 
+memory. The program then displays the student data, lookup student data by ID, and 
+edit student data members.
 
-Credits: Gaddis, Wk7 Lab2, Matt Haberland (YT), IBM, Stackoverflow
+Credits: Gaddis, Wk7 Lab2, Matt Haberland (YT), IBM, 
+Stackoverflow, wk5 lab2, 
 */
 
 #include <cstring>
@@ -29,6 +37,7 @@ void EnsureFile();
 int LoadData(Student*&); 
 void DisplayAll(Student*, int, ostream& os = cout);
 void DisplayHeaders(ostream& os = cout);
+void Lookup(Student*, int);
 // void DisplayOptions();
 
 int main() {
@@ -49,8 +58,8 @@ int main() {
     // Display All Students (columns format)
     DisplayAll(students, size);
 
-    // // LookUp Student
-    // LookUp(students, size, target);
+    // LookUp Student
+    Lookup(students, size);
 
     // UpdateStudentInfo(students, size, target);
 
@@ -170,4 +179,33 @@ void DisplayAll(Student* arr, int size, ostream& os) {
     for (int idx=0; idx < size; idx++) {
         arr[idx].output(os);
     }
+    cout << endl;
+}
+
+
+void Lookup(Student* arr, int size) {
+    char target[7] {};
+    fstream rafile;     // random access file
+    int idx {};         // index of target found in a array
+    Student single;     // Object used to store target's data
+
+    // Open file to read (binary file)
+    rafile.open(FILENAME, ios::in | ios::binary);
+ 
+    // Demonstrate that we can lookup one person, retrieve that record 
+    cout << "Enter the ID of a student to look up: ";
+    cin >> setw(7) >> target;
+    
+    for (idx = 0; idx < size && strcmp(arr[idx].getID(), target) != 0; ++idx);
+    if (idx < size) { // If found
+        rafile.seekg(idx * sizeof(Student));
+        // Read a single record from the disk and confirm as the intended target
+        rafile.read(reinterpret_cast<char*>(&single), sizeof(Student));
+        single.output(cout);
+    }
+     else
+        cout << target << " not found\n";
+   
+    // Close file
+    rafile.close();
 }
