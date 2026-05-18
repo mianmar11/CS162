@@ -25,7 +25,7 @@ Student :: Student(string arg_name, string arg_major, double arg_gpa, string arg
 }
 
 Student :: Student(const Student& other): gpa {other.gpa} {
-    itoa(++counter, id, 10);
+    itoa(counter, id, 10);
 
     strncpy(name, other.name, sizeof(name) - 1);
     strncpy(city, other.city, sizeof(city) - 1);
@@ -46,18 +46,18 @@ void Student :: output(ostream& os) {
 
 
 // Setters (Mutators)
-void Student :: setID(char arg[]) {
-    strncpy(id, arg, sizeof(id) - 1);
+void Student :: setID(string arg) {
+    strncpy(id, arg.c_str(), sizeof(id) - 1);
     major[sizeof(major) - 1] = '\0';
 }   
 
-void Student :: setName(char arg[]) {
-    strncpy(name, arg, sizeof(name) - 1);
+void Student :: setName(string arg) {
+    strncpy(name, arg.c_str(), sizeof(name) - 1);
     name[sizeof(name) - 1] = '\0';
 }
 
-void Student :: setMajor(char arg[]) {
-    strncpy(major, arg, sizeof(major) - 1);
+void Student :: setMajor(string arg) {
+    strncpy(major, arg.c_str(), sizeof(major) - 1);
     major[sizeof(major) - 1] = '\0';
 }
 
@@ -70,8 +70,8 @@ void Student :: setGpa(double arg) {
     gpa = arg;
 }
 
-void Student :: setCity(char arg[]) {
-    strncpy(city, arg, sizeof(city) - 1);
+void Student :: setCity(string arg) {
+    strncpy(city, arg.c_str(), sizeof(city) - 1);
     city[sizeof(city) - 1] = '\0';
 }
 

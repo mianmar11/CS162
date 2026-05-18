@@ -21,11 +21,11 @@ class Student {
 
         void output(std::ostream&);         // write the member datas to any ostream destination or file
 
-        void setID(char[]);                 
-        void setName(char[]);
-        void setMajor(char[]);
+        void setID(std::string);                 
+        void setName(std::string);
+        void setMajor(std::string);
         void setGpa(double);
-        void setCity(char[]);
+        void setCity(std::string);
 
         const char* getID() const;
         const char* getName() const;

@@ -15,7 +15,7 @@ memory. The program then displays the student data, lookup student data by ID, a
 edit student data members.
 
 Credits: Gaddis, Wk7 Lab2, Matt Haberland (YT), IBM, 
-Stackoverflow, wk5 lab2, 
+Stackoverflow, wk5 lab2, wk6 hw,
 */
 
 #include <cstring>
@@ -37,14 +37,18 @@ void EnsureFile();
 int LoadData(Student*&); 
 void DisplayAll(Student*, int, ostream& os = cout);
 void DisplayHeaders(ostream& os = cout);
-void Lookup(Student*, int);
-// void DisplayOptions();
+int Lookup(Student*, int, char[]);
+void DisplayOptions();
+int GetInput();
+void GetTarget(char[]);
+int UpdateOptions(Student*, int, char[]);
 
 int main() {
     // Init Vairables
-    Student* students = nullptr;  // Student array containing student objects, store up to 100 records
-    int size = 0;           // Current size of students records held in the array
-    char target[7];      // target id used to search for students
+    Student* students = nullptr;    // Student array containing student objects, store up to 100 records
+    int size = 0;                   // Current size of students records held in the array
+    char target[7];                 // target id used to search for students
+    int choice;                     // User input for chioce options
 
     // Welcome User
     cout << "Student Database Program v1.0." << endl << endl;
@@ -59,9 +63,15 @@ int main() {
     DisplayAll(students, size);
 
     // LookUp Student
-    Lookup(students, size);
+    Lookup(students, size, target);
 
-    // UpdateStudentInfo(students, size, target);
+    // Display Options
+    DisplayOptions();
+
+    // Update Student Options
+    UpdateOptions(students, size, target);
+
+    DisplayAll(students, size);
 
     // Handshake
     cout << "\nProgram Complete.";
@@ -103,6 +113,11 @@ void EnsureFile() {
         Student("Mitch", "Business", 4, "Portland"),
         Student()
     };
+
+    // Edit one of the elements with copy constructor
+    samples[3] = Student(samples[2]);
+    samples[3].setName("Johnny Joster");
+    samples[3].setMajor("Mechanic");
 
     // // Display Sample 
     // DisplayAll(samples, SIZE);
@@ -182,30 +197,109 @@ void DisplayAll(Student* arr, int size, ostream& os) {
     cout << endl;
 }
 
-
-void Lookup(Student* arr, int size) {
-    char target[7] {};
+// Purpose: To look up student from random access file by ID
+// Arguments: Student pointer and int size
+// Returns: None
+int Lookup(Student* arr, int size, char target[]) {
     fstream rafile;     // random access file
     int idx {};         // index of target found in a array
     Student single;     // Object used to store target's data
 
     // Open file to read (binary file)
     rafile.open(FILENAME, ios::in | ios::binary);
- 
+
     // Demonstrate that we can lookup one person, retrieve that record 
-    cout << "Enter the ID of a student to look up: ";
-    cin >> setw(7) >> target;
+    GetTarget(target);
     
     for (idx = 0; idx < size && strcmp(arr[idx].getID(), target) != 0; ++idx);
     if (idx < size) { // If found
         rafile.seekg(idx * sizeof(Student));
         // Read a single record from the disk and confirm as the intended target
         rafile.read(reinterpret_cast<char*>(&single), sizeof(Student));
-        single.output(cout);
+        cout << single << endl;
     }
-     else
+    else
         cout << target << " not found\n";
-   
+    
     // Close file
     rafile.close();
+
+    return idx;
+}
+
+// Purpose: To display options to make changes to a student
+// Arguments: None
+// Returns: None
+void DisplayOptions() {
+    cout << "Student Database Functions: " << endl;
+    cout << setw(26) << "1) Update Address"       << "2) Look Up a Student" << endl
+         << setw(26) << "3) Display All Students" << "4) Exit" << endl;
+}
+
+// Purpose: To get user input for choice
+// Arguments: None
+// Returns: None
+int GetInput() {
+    int choice = -1;
+
+    cout << "\nPlease enter your choice: ";
+
+    while (!(cin >> choice) || choice < 0 || choice > 4) {
+        cin.clear();
+        cin.ignore(1024, '\n');
+        cout << "Please enter the digits of the options above: ";
+    }
+
+    return choice;
+}
+
+// Purpose: To get the target 
+// Arguments: char [] target
+// Returns: None
+void GetTarget(char target[]) { // (for func, char* instead of char[])
+    cout << "Please enter a Student ID to look up: ";
+    cin >> setw(7) >> target;
+}
+
+// Purpose: To update the Student info
+// Arguments: Student*[], size, target
+// Returns: None
+int UpdateOptions(Student* arr, int size, char target[]) {
+    int option = GetInput();    // User choice of option
+    int pos = 0;                // Get Target Pos
+    string update = "";         // Update use to change customer's setting
+    
+    switch (option) {
+        case 1:
+            pos = Lookup(arr, size, target);
+
+            // Set Customer City
+            cout << "Please enter a new city: ";
+            cin >> update;
+            arr[pos].setCity(update);
+            break;
+
+        case 2:
+            pos = Lookup(arr, size, target);  // Get Target Pos
+
+            // Set Company Name
+            cout << "Student with ID [" << target << "] has found." << endl;
+            DisplayHeaders();
+            cout << arr[pos] << endl;
+            break;
+
+        case 3:
+            DisplayAll(arr, size);
+            break;
+
+        case 4: // Exit Code
+            return 0;
+            break;
+
+        default:
+            cout << "Error! The option " << option << " does not exist." << endl;
+            break;
+    }
+
+    return 1;
 }
