@@ -11,16 +11,16 @@ class Person {
     
     public:
         Person(): name{""}, age{0} {};
-        Person(const char* argName, int argAge): age{argAge} {};
-        Person(Person &source);
+        Person(const char* argName, int argAge);
+        Person(const Person &source);
 
         void output(std::ostream& os);
 
         void setName(const char* newName);
         void setAge(int newAge);
 
-        const char* getName() {return name;};
-        int getAge() {return age;};
+        const char* getName();
+        int getAge();
 };
 
 
@@ -34,6 +34,20 @@ class Student: public Person {
     protected: 
 
     public:
-        Student(const char* argID, const char* argMajor, 
-        double argGPA, const char* city);
+        Student();
+        Student(const char* name, int age, const char* argID, const char* argMajor, 
+        double argGPA, const char* argCity);
+        Student(const Student &source);
+
+        void output(std::ostream& os);
+
+        void setID(const char* newID);
+        void setMajor(const char* newMajor);
+        void setGPA(double newGPA);
+        void setCity(const char* newCity);
+
+        const char* getID();
+        const char* getMajor();
+        double getGPA();
+        const char* getCity();
 };
