@@ -19,3 +19,11 @@ because. This is not safe
 
 const by value is usually used by passed by reference, it would have no meaning
 if used in passed by value in parameters
+
+When using character strings, it is best to manually assign null terminator at the end because, getting 
+user input might make the memory hold more value than it should, which interfere with other memorys 
+
+char* datatype func() -> returns character address which means whoever gets it get access to the 
+returned value's address 
+
+
