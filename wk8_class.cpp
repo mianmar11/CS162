@@ -98,3 +98,31 @@ void Student::setCity(const char* newCity) {
     strncpy(city, newCity, sizeof(city) - 1);
     city[sizeof(city) - 1] = '\0';
 }
+
+// Getters
+
+const char* Person::getName() {
+    return name;
+}
+
+int Person::getAge() {
+    return age;
+}
+
+
+const char* Student::getID() {
+    return id;
+}
+
+const char* Student::getMajor() {
+    return major;
+}
+
+double Student::getGPA() {
+    return gpa;
+}
+
+const char* Student::getCity() {
+    return city;
+}
+
